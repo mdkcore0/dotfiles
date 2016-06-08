@@ -150,10 +150,6 @@ export EDITOR="vim"
 export GIT_EDITOR=$EDITOR
 export SVN_EDITOR=$GIT_EDITOR
 
-export TERM="screen-256color"
-#export TERM="xterm-256color"
-#export TERM="st-256color"
-
 export PYTHONSTARTUP=$HOME/.pythonrc
 
 if [[ -n "$DISPLAY" && -z "$TMUX" ]];
