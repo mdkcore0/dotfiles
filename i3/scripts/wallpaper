@@ -1,0 +1,69 @@
+#!/bin/sh
+
+# Simple wallpaper setter for i3
+# https://github.com/rodrigogolive/dotfiles | http://blog.thecoreme.org
+
+# HOWTO
+# Add this to i3 config:
+#
+# exec --no-startup-id <PATH_TO>/wallpaper <PATH_TO_IMAGE> &
+#
+# This will run only once (when starting i3). To run at any time i3 restarts,
+# change 'exec' to 'exec_always'
+
+# TODO wallpaper modes?
+
+# wallpaper target; it can be a local file or a Imgur url (requires imgurme)
+TARGET=$1
+
+# just check if we received an argument
+if [ -z $TARGET ]
+then
+    echo "Missing wallpaper parameter; bye!"
+    exit 1
+fi
+
+echo -n "Checking if compton is running... "
+
+if pgrep "[c]ompton"
+then
+    # runnning compton, set using feh
+    echo "OK"
+
+    echo -n "Checking if feh is available... "
+    exists=`which feh > /dev/null; echo $?`
+    if [[ $exists == 0 ]]
+    then
+        echo "OK"
+
+        echo "Setting wallpaper!"
+        # XXX
+        #feh --bg-center $TARGET
+    else
+        echo "'feh' not found, not setting wallpaper :("
+    fi
+else
+    # compton not running, try to set wallpaper with convert and display
+    echo "NOPE"
+
+    echo -n "Checking if convert and display are available... "
+    cexists=`which convert > /dev/null; echo $?`
+    dexists=`which display > /dev/null; echo $?`
+    if [[ $cexists == 0 && $dexists == 0 ]]
+    then
+        echo "OK"
+
+        TMP_WALLPAPER='/tmp/wallpaper.png'
+
+        fullSize=$(xrandr | grep -w connected | awk '{print $3}')
+        size=$(echo $fullSize | cut -d'+' -f1)
+
+        echo "Setting wallpaper!"
+        convert $TARGET -resize "$size^" -gravity center -crop $fullSize\
+            +repage $TMP_WALLPAPER && display -size $size -window\
+            root $TMP_WALLPAPER
+    else
+        echo "NOPE"
+        echo "'convert' and/or 'display' not found, not setting wallpaper :("
+    fi
+fi
