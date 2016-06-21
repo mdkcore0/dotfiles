@@ -175,7 +175,8 @@ exec --no-startup-id synclient HorizEdgeScroll=1 VertEdgeScroll=1 VertScrollDelt
 exec --no-startup-id owncloud&
 exec --no-startup-id nm-applet
 ####################
-exec --no-startup-id $HOME/.i3/scripts/wallpaper $DROPCORE/shared/images/wallpapers/madmax_furyroad.jpg &
+set $wallpaper $DROPCORE/shared/images/wallpapers/madmax_furyroad.jpg
+exec --no-startup-id $HOME/.i3/scripts/wallpaper $wallpaper&
 
 # workspace assigns
 assign [class="^Chromium-dev$"] 1
