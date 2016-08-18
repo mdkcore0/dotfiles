@@ -33,8 +33,11 @@
 "   <leader>y = history/yank
 "   <leader>/ = grep
 "   <leader>o = outline
+"   <leader>*word = grep search for word (word under cursor)
+"   <leader>,g = git grep
 "       <C-s> (in buffer) = horizontally split file
 "       <C-v> (in buffer) = vertically split file
+"       <C-r> (in buffer) = replace window with file
 "   <leader>s = session
 "   nerdcommenter
 "   <leader>c<space> = comment/uncomment

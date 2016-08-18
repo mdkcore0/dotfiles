@@ -137,15 +137,24 @@ call unite#custom#profile('default', 'context', {
     \'short_source_names': 1,
 \})
 call unite#custom#source('line,outline','matchers','matcher_fuzzy')
-" TODO look on tab/split/vsplit-switch actions
 call unite#custom#default_action('file,buffer', 'tabopen')
-"call unite#custom#default_action('buffer', 'goto')
 let g:unite_force_overwrite_statusline=0
 let g:unite_source_history_yank_enable=1
 let g:unite_source_file_mru_long_limit=3000
 let g:unite_source_directory_mru_long_limit=3000
 let g:unite_source_file_mru_limit=200
 let g:unite_source_file_mru_filename_format=''
+
+" use 'the silver searcher' instead of 'grep' if available
+if executable('ag')
+    let g:unite_source_rec_async_command = ['ag', '--follow', '--nocolor',
+                \ '--nogroup', '--hidden', '-g', '']
+    let g:unite_source_grep_command='ag'
+    let g:unite_source_grep_default_opts = '-i --vimgrep --hidden --ignore ' .
+                \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
+    let g:unite_source_grep_recursive_opt = ''
+endif
+
 nnoremap <leader>* :UniteWithCursorWord -buffer-name=grep grep:.<cr>
 nnoremap <leader>i :Unite -buffer-name=file file<cr>
 nnoremap <leader>r :Unite -force-redraw -buffer-name=file_rec file_rec/async:!<cr>
@@ -153,13 +162,19 @@ nnoremap <leader>m :Unite -buffer-name=file_mru file_mru<cr>
 nnoremap <leader>p :Unite -buffer-name=files buffer file_mru bookmark file_rec/async<cr>
 nnoremap <leader>h :Unite -buffer-name=buffer buffer<cr>
 nnoremap <leader>y :Unite -buffer-name=history_yank history/yank<cr>
-nnoremap <leader>/ :Unite -buffer-name=grep -default-action=tabdrop grep:.<cr>
+nnoremap <leader>/ :Unite -buffer-name=grep grep:.<cr>
 nnoremap <leader>o :Unite -buffer-name=outline -horizontal -direction=above outline<cr>
 nnoremap <leader>s :Unite -no-split session<cr>
+
+nnoremap <silent>,g :Unite -buffer-name=git-grep file_rec/git:--cached:--others:--exclude-standard<cr>
+
 au FileType unite inoremap <buffer><expr> <C-s> unite#do_action('split')
 au FileType unite nnoremap <buffer><expr> <C-s> unite#do_action('split')
 au FileType unite inoremap <buffer><expr> <C-v> unite#do_action('vsplit')
 au FileType unite nnoremap <buffer><expr> <C-v> unite#do_action('vsplit')
+au FileType unite inoremap <buffer><expr> <C-r> unite#do_action('switch')
+au FileType unite nnoremap <buffer><expr> <C-r> unite#do_action('switch')
+
 autocmd FileType unite call s:unite_settings()
 function! s:unite_settings()
     nmap <buffer> <ESC> <Plug>(unite_exit)
