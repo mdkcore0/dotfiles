@@ -10,8 +10,8 @@ DISABLE_AUTO_UPDATE="true"
 #source /opt/local/bin/virtualenvwrapper.sh-2.7
 #export VIRTUALENVWRAPPER_VIRTUALENV=/opt/local/bin/virtualenv-2.7
 
-plugins=(vi-mode vundle colored-man)
-#plugins=(vi-mode vundle colored-man virtualenv virtualenvwrapper)
+# NOTE: do not forget to add fasd to your PATH
+plugins=(vi-mode vundle colored-man fasd extract)
 
 # zsh-completions | https://github.com/zsh-users/zsh-completions
 fpath=($HOME/downloads/GIT/zsh-completions/src $fpath)
@@ -21,11 +21,6 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 source $HOME/.profile
 
-# z | https://github.com/rupa/z
-#source $HOME/downloads/GIT/z/z.sh
-# fasd | https://github.com/clvv/fasd/
-# NOTE: do not forget to add fasd to your PATH
-eval "$(fasd --init auto)"
 # s | https://github.com/haosdent/s
 source $HOME/downloads/GIT/s/s.sh
 
