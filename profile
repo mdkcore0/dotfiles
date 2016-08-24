@@ -84,7 +84,7 @@ if [ "$USER" = mdk ]
 then
     # ssh keys (and gpg) on keychain
     # add keys after '--quick'
-    eval `keychain --eval --quiet --agents "ssh,gpg" --quick`
+    eval `keychain --eval --quiet --agents "ssh,gpg" --quick nephthys_git nephthys_ed25519`
 
     PATH="$HOME/.bin:/sbin:/usr/sbin:$PATH"
 
