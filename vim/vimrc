@@ -116,7 +116,6 @@ set ai "Auto indent
 set si "Smart indet
 set wrap "Wrap lines
 set nu " line numbering
-set term=st
 set cursorline
 set autoindent
 set backspace=indent,eol,start
@@ -140,7 +139,7 @@ set ffs=unix,dos,mac
 set clipboard=unnamedplus
 set noshowmode
 
-set t_Co=256
+set t_ut=
 
 
 " use # as comment on python files
