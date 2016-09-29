@@ -53,6 +53,9 @@
 "   C-k = jump backward
 
 
+set nocompatible
+
+
 " bind caps lock (F16) to toggle insert/command mode
 nmap [29~ <F16>
 imap [29~ <F16>
@@ -92,7 +95,6 @@ map <right> <c-w>l
 
 
 " vundle | git://github.com/gmarik/vundle.git
-set nocompatible
 filetype off
 set rtp+=$HOME/.vim/bundle/Vundle.vim
 filetype plugin indent on
@@ -109,7 +111,6 @@ endif
 
 
 " basic setup
-set nocp
 syntax on
 set mouse-=a
 set ai "Auto indent
@@ -196,9 +197,10 @@ set ssop-=options
 set modeline
 
 " damn delay
+set ttimeoutlen=0
 augroup FastEscape
     autocmd!
-    au InsertEnter * set timeoutlen=0
+    au InsertEnter * set timeoutlen=10
     au InsertLeave * set timeoutlen=1000
 augroup END
 
