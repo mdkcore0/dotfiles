@@ -14,6 +14,29 @@ function sgrep(){
     fi
 }
 
+# ag improved
+alias ag='ag --color-match "30;33" --color-path 35 --color-line-number 32 --color'
+
+# super ag
+function sag() {
+    result=`ag --nobreak --noheading "$@" | sed -e 's/:/ +/' -e 's/:\s*/|/' | column -t -s '|'`
+
+    lines=`echo "${result}" | wc -l`
+
+    cmd="fzf"
+    if [[ `which $cmd &> /dev/null; echo $?` != 0 ]]
+    then
+        cmd="less -R"
+    fi
+
+    if (( $LINES <= $lines + 3 ))
+    then
+        echo "${result}" | eval $cmd
+    else
+        echo "${result}"
+    fi
+}
+
 # super run, will copy to the clipboard a given command as an argument or the last runned command, if no arguments
 function srun(){
     if [[ x$@ !=  x ]]
