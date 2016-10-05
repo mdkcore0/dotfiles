@@ -24,6 +24,13 @@
     ~/.vim/bundles.vim:
         create: true
         path: vim/bundles.vim
+    # neovim
+    ~/.config/nvim/bundles.vim:
+        create: true
+        path: vim/bundles.vim
+    ~/.config/nvim/init.vim:
+        create: true
+        path: vim/vimrc
     #~/.asoundrc: asoundrc
     ~/.pythonrc: pythonrc
     # tig
@@ -82,7 +89,7 @@
     # Vundle
     -
         - git clone --recursive https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-        - "Cloning VUNDLE dependency (Run it afterwards: vim +PluginInstall +qall)"
+        - "Cloning VUNDLE dependency (Run it afterwards: vim (or nvim) +PluginInstall +qall)"
     # weechat
     -
       - git clone --recursive https://github.com/weechat/scripts.git ~/downloads/GIT/weechat-scripts

@@ -6,6 +6,11 @@ call vundle#begin()
 " Vundle | https://github.com/VundleVim/Vundle.vim
 Plugin 'gmarik/Vundle.vim'
 
+if has('nvim')
+    " vim-airline | https://github.com/vim-airline/vim-airline
+    Plugin 'vim-airline/vim-airline'
+    Plugin 'vim-airline/vim-airline-themes'
+endif
 
 " GitGutter | https://github.com/airblade/vim-gitgutter
 Plugin 'airblade/vim-gitgutter'
@@ -95,6 +100,15 @@ call vundle#end()
 filetype plugin indent on
 
 " Configuration
+
+if has('nvim')
+    " vim-airline | https://github.com/vim-airline/vim-airline
+    let g:python2_host_prog = '/usr/local/bin/python'
+    let g:airline_powerline_fonts = 1
+    let g:airline#extensions#tabline#enabled = 1
+    let g:airline#extensions#tabline#show_close_button = 0
+    let g:airline#extensions#tabline#show_buffers = 0
+endif
 
 " EasyMotion | https://github.com/Lokaltog/vim-easymotion
 let g:EasyMotion_leader_key = '<Leader>'

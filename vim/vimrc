@@ -102,26 +102,24 @@ filetype plugin indent on
 source $HOME/.vim/bundles.vim
 
 
-" powerline
-set rtp+=$HOME/downloads/GIT/powerline/powerline/bindings/vim
+if !has('nvim')
+    " powerline
+    set rtp+=$HOME/downloads/GIT/powerline/powerline/bindings/vim
+endif
 
 
 " basic setup
 set nocp
 syntax on
-"filetype plugin on
-"filetype indent on
 set mouse-=a
 set ai "Auto indent
 set si "Smart indet
 set wrap "Wrap lines
 set nu " line numbering
 set cursorline
-set autoindent
 set backspace=indent,eol,start
 set browsedir=current
 set ruler
-set smartindent
 set wildignore=*.o,*.e,*~
 set wildignorecase
 set wildmenu
@@ -138,6 +136,7 @@ set encoding=utf8
 set ffs=unix,dos,mac
 set clipboard=unnamedplus
 set noshowmode
+
 
 set t_ut=
 
@@ -163,7 +162,9 @@ set pumheight=20 " Limit popup menu height
 highlight clear SignColumn
 
 " restore the cursor on the last line of the file
-set viminfo='10,\"100,:20,%,n~/.viminfo'
+if !has('nvim')
+    set viminfo='10,\"100,:20,%,n~/.viminfo'
+endif
 
 if has("autocmd")
   autocmd BufReadPost *
@@ -193,7 +194,6 @@ set colorcolumn=80
 set updatetime=750
 set ssop-=options
 set modeline
-"set tabstop=8
 
 " damn delay
 augroup FastEscape
