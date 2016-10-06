@@ -180,6 +180,6 @@ assign [class="^Chromium-dev$"] 1
 assign [class="^Steam$"]        10
 
 # other bindings
-bindsym XF86AudioRaiseVolume exec "$HOME/.i3/scripts/amixer-wrapper inc"
-bindsym XF86AudioLowerVolume exec "$HOME/.i3/scripts/amixer-wrapper dec"
-bindsym XF86AudioMute exec "$HOME/.i3/scripts/amixer-wrapper toggle"
+bindsym XF86AudioRaiseVolume exec "$HOME/.i3/scripts/pactl-wrapper inc"
+bindsym XF86AudioLowerVolume exec "$HOME/.i3/scripts/pactl-wrapper dec"
+bindsym XF86AudioMute exec "$HOME/.i3/scripts/pactl-wrapper toggle"

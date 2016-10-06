@@ -57,6 +57,6 @@ TEXT
         {"full_text" : "disconnected"},$endif
     $endif
 
-    {"full_text" : "Mixer ${exec $HOME/.i3/scripts/amixer-wrapper state}", "color" : "\#ffffff" },
+    {"full_text" : "Mixer ${exec $HOME/.i3/scripts/pactl-wrapper state}", "color" : "\#ffffff" },
     {"full_text" : "${time %a %d/%m/%y} ${time %H:%M}", "color" : "\#ffffff" }
 ],

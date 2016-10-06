@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+# Simple pactl wrapper for i3
+# https://github.com/rodrigogolive/dotfiles | http://blog.thecoreme.org
+
+# settings
+VOLINCDEC=5
+SINK=@DEFAULT_SINK@
+
+case $1 in
+    state)
+        port=$(pactl list sinks | grep "Active Port" | awk '{print $3}')
+        state=$(pactl list sinks| grep Mute | awk '{print $2}')
+        vol=$(pactl list sinks | grep Volume | head -n1 | awk '{print $5}')
+
+        icon=""
+        if [ $port == "analog-output-headphones" ]
+        then
+            icon="(headphones)"
+        fi
+        # XXX check other options
+
+        # XXX icons
+        #echo " " # headphone
+        #echo " " # mute
+        #echo " " # down
+        #echo " " # up
+
+        if [ $state == "yes" ]
+        then
+            echo "$icon mute"
+        else
+            echo "$icon $vol"
+        fi
+
+        ;;
+    inc)
+        pactl set-sink-mute $SINK false
+        pactl set-sink-volume $SINK +$VOLINCDEC%
+        ;;
+    dec)
+        pactl set-sink-mute $SINK false
+        pactl set-sink-volume $SINK -$VOLINCDEC%
+        ;;
+    toggle)
+        pactl set-sink-mute $SINK toggle
+        ;;
+esac
