@@ -120,3 +120,7 @@
     -
       - git clone --recursive https://github.com/hchbaw/zce.zsh.git ~/downloads/GIT/zce.zsh
       - "Cloning zce.zsh dependency"
+    # fzf
+    -
+      - git clone --recursive https://github.com/junegunn/fzf.git ~/downloads/GIT/fzf
+      - "Cloning fzf dependency"

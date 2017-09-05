@@ -71,8 +71,8 @@ bindkey "^B" backward-word # control + b
 
 bindkey '^[[Z' reverse-menu-complete # shift + tab
 
-bindkey "^R" history-incremental-pattern-search-backward # control + r
 bindkey "^S" history-incremental-pattern-search-forward #control + s
+bindkey -M vicmd '^r' history-incremental-pattern-search-backward
 
 # use caps lock (ESC) to toggle insert/command mode
 bindkey -M vicmd "^[" vi-insert
@@ -80,3 +80,27 @@ bindkey -M viins "^[" vi-cmd-mode
 
 #damn delay
 KEYTIMEOUT=1
+
+# fzf | https://github.com/junegunn/fzf
+# # TODO test if 'ag' is available
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='/usr/bin/ag -g ""'
+export FZF_DEFAULT_OPTS="--no-256 \
+    --no-mouse \
+    --ansi \
+    -0 -1 \
+    --color dark,hl:33,hl+:37,fg+:235,bg+:136,fg+:254 \
+    --color info:254,prompt:37,spinner:108,pointer:235,marker:235"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_OPTS="--preview '$HOME/.config/ranger/scope.sh {}' \
+    --bind 'ctrl-t:toggle-preview'"
+
+fzf-history-widget-accept() {
+    fzf-history-widget
+    zle accept-line
+}
+zle -N fzf-history-widget-accept
+bindkey '^F' fzf-history-widget-accept # control-f
+
+# TODO bindings should be done after setting all plugins
+bindkey "^R" history-incremental-pattern-search-backward # control + r
