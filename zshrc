@@ -1,8 +1,9 @@
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/downloads/GIT/oh-my-zsh
 
-# Comment this out to disable weekly auto-update checks
 DISABLE_AUTO_UPDATE="true"
+COMPLETION_WAITING_DOTS="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # virtualenv + virtualenvwrapper | XXX not using at home right now, remove?
 #VIRTUALENVWRAPPER_PYTHON=/opt/local/bin/python2.7
