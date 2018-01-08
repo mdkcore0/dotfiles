@@ -16,8 +16,8 @@ endif
 Plugin 'airblade/vim-gitgutter'
 
 
-" EasyMotion | https://github.com/Lokaltog/vim-easymotion
-Plugin 'Lokaltog/vim-easymotion'
+" EasyMotion | https://github.com/easymotion/vim-easymotion
+Plugin 'easymotion/vim-easymotion'
 
 
 " YouCompleteMe | https://github.com/Valloric/YouCompleteMe
@@ -161,8 +161,6 @@ let g:unite_source_file_mru_filename_format=''
 
 " use 'the silver searcher' instead of 'grep' if available
 if executable('ag')
-    let g:unite_source_rec_async_command = ['ag', '--follow', '--nocolor',
-                \ '--nogroup', '--hidden', '-g', '']
     let g:unite_source_grep_command='ag'
     let g:unite_source_grep_default_opts = '-i --vimgrep --hidden --ignore ' .
                 \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
@@ -171,7 +169,7 @@ endif
 
 nnoremap <leader>* :UniteWithCursorWord -buffer-name=grep grep:.<cr>
 nnoremap <leader>i :Unite -buffer-name=file file<cr>
-nnoremap <leader>r :Unite -force-redraw -buffer-name=file_rec file_rec/async:!<cr>
+nnoremap <leader>r :Unite -force-redraw -buffer-name=file_rec file_rec/neovim:!<cr>
 nnoremap <leader>m :Unite -buffer-name=file_mru file_mru<cr>
 nnoremap <leader>p :Unite -buffer-name=files buffer file_mru bookmark file_rec/async<cr>
 nnoremap <leader>h :Unite -buffer-name=buffer buffer<cr>
