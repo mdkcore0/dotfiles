@@ -39,8 +39,8 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/nerdcommenter'
 
 
-" delimitMate | https://github.com/Raimondi/delimitMate
-Plugin 'Raimondi/delimitMate'
+" auto-pairs | https://github.com/jiangmiao/auto-pairs
+Plugin 'jiangmiao/auto-pairs'
 
 
 " Unite | https://github.com/Shougo/unite.vim
