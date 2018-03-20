@@ -43,18 +43,12 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'jiangmiao/auto-pairs'
 
 
-" Unite | https://github.com/Shougo/unite.vim
-Plugin 'Shougo/unite.vim'
-" unite-outline | https://github.com/Shougo/unite-outline
-Plugin 'Shougo/unite-outline'
-" unite-session | https://github.com/Shougo/unite-session
-Plugin 'Shougo/unite-session'
 " neomru | https://github.com/Shougo/neomru.vim
 Plugin 'Shougo/neomru.vim'
 " neoyank | https://github.com/Shougo/neoyank.vim
 Plugin 'Shougo/neoyank.vim'
-" vimproc | https://github.com/Shougo/vimproc.vim | NOTE: run 'make'
-Plugin 'Shougo/vimproc.vim'
+" denite.nvim | https://github.com/Shougo/denite.nvim
+Plugin 'Shougo/denite.nvim'
 
 
 " vim-tmux-navigator | https://github.com/christoomey/vim-tmux-navigator
@@ -136,61 +130,80 @@ set background=dark
 colorscheme solarized
 
 
-" Unite | https://github.com/Shougo/unite.vim
-" unite-outline | https://github.com/Shougo/unite-outline
-" unite-session | https://github.com/Shougo/unite-session
-nnoremap <F3> :UniteSessionSave 
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#filters#sorter_default#use(['sorter_rank'])
-call unite#custom#profile('default', 'context', {
-    \'context.smartcase': 1,
-    \'start_insert': 1,
-    \'direction': 'below',
-    \'prompt_direction': 'top',
-    \'prompt': ' ',
-    \'short_source_names': 1,
+" denite.nvim | https://github.com/Shougo/denite.nvim
+" XXX
+"nnoremap <F3> :UniteSessionSave 
+call denite#custom#source(
+    \"buffer,file,file_mru,file_rec,grep",
+    \"matchers", ['matcher_fuzzy'])
+call denite#custom#source('z', 'sorters', ['sorter_rank'])
+call denite#custom#option('_', {
+    \'prompt': '',
+    \'smartcase': v:true,
+    \'short_source_names': v:true,
+    \'empty': v:false,
+    \'auto_resume': v:true,
+    \'highlight_matched_char': 'Operator',
+    \'highlight_mode_normal': 'CursorLine',
 \})
-call unite#custom#source('line,outline','matchers','matcher_fuzzy')
-call unite#custom#default_action('file,buffer', 'tabopen')
-let g:unite_force_overwrite_statusline=0
-let g:unite_source_history_yank_enable=1
 let g:unite_source_file_mru_long_limit=3000
 let g:unite_source_directory_mru_long_limit=3000
 let g:unite_source_file_mru_limit=200
 let g:unite_source_file_mru_filename_format=''
 
-" use 'the silver searcher' instead of 'grep' if available
+"" use 'the silver searcher' instead of 'grep' if available
 if executable('ag')
-    let g:unite_source_grep_command='ag'
-    let g:unite_source_grep_default_opts = '-i --vimgrep --hidden --ignore ' .
-                \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
-    let g:unite_source_grep_recursive_opt = ''
+    call denite#custom#var('grep', 'command', ['ag'])
+    call denite#custom#var('grep', 'recursive_opts', [])
+    call denite#custom#var('grep', 'pattern_opt', [])
+    call denite#custom#var('grep', 'separator', ['--'])
+    call denite#custom#var('grep', 'final_opts', [])
+    call denite#custom#var('grep', 'default_opts', [
+        \'--skip-vcs-ignores',
+        \'--vimgrep',
+        \'--hidden',
+        \'--smart-case',
+        \'--nocolor',
+    \])
 endif
 
-nnoremap <leader>* :UniteWithCursorWord -buffer-name=grep grep:.<cr>
-nnoremap <leader>i :Unite -buffer-name=file file<cr>
-nnoremap <leader>r :Unite -force-redraw -buffer-name=file_rec file_rec/neovim:!<cr>
-nnoremap <leader>m :Unite -buffer-name=file_mru file_mru<cr>
-nnoremap <leader>p :Unite -buffer-name=files buffer file_mru bookmark file_rec/async<cr>
-nnoremap <leader>h :Unite -buffer-name=buffer buffer<cr>
-nnoremap <leader>y :Unite -buffer-name=history_yank history/yank<cr>
-nnoremap <leader>/ :Unite -buffer-name=grep grep:.<cr>
-nnoremap <leader>o :Unite -buffer-name=outline -horizontal -direction=above outline<cr>
-nnoremap <leader>s :Unite -no-split session<cr>
+" custom bindings
+nnoremap <leader>* :DeniteCursorWord -buffer-name=grep grep:.<cr>
+nnoremap <leader>i :Denite -buffer-name=file file<cr>
+nnoremap <leader>r :Denite -buffer-name=file_rec file_rec<cr>
+nnoremap <leader>m :Denite -buffer-name=file_mru file_mru<cr>
+nnoremap <leader>p :Denite -buffer-name=files buffer file_mru file_rec<cr>
+nnoremap <leader>h :Denite -buffer-name=buffer buffer<cr>
+nnoremap <leader>y :Denite -buffer-name=yank neoyank<cr>
+nnoremap <leader>/ :Denite -buffer-name=grep grep:.<cr>
+" install exuberant-ctags
+nnoremap <leader>o :Denite -buffer-name=outline -split=vertical -winwidth=60 -default-action=open outline<cr>
+" XXX
+"nnoremap <leader>s :Unite -no-split session<cr>
 
-nnoremap <silent>,g :Unite -buffer-name=git-grep file_rec/git:--cached:--others:--exclude-standard<cr>
+call denite#custom#alias('source', 'file_rec/git', 'file_rec')
+call denite#custom#var('file_rec/git', 'command',
+      \['git', 'ls-files', '-co', '--exclude-standard'])
+nnoremap <silent>,g :Denite -buffer-name=git-grep file_rec/git<cr>
 
-au FileType unite inoremap <buffer><expr> <C-s> unite#do_action('split')
-au FileType unite nnoremap <buffer><expr> <C-s> unite#do_action('split')
-au FileType unite inoremap <buffer><expr> <C-v> unite#do_action('vsplit')
-au FileType unite nnoremap <buffer><expr> <C-v> unite#do_action('vsplit')
-au FileType unite inoremap <buffer><expr> <C-r> unite#do_action('switch')
-au FileType unite nnoremap <buffer><expr> <C-r> unite#do_action('switch')
+" global mappings
+call denite#custom#map('_', '<CR>', '<denite:do_action:tabopen>', 'noremap')
+let _mode_mappings = [
+    \['<C-n>', '<denite:move_to_next_line>', 'noremap'],
+    \['<C-p>', '<denite:move_to_previous_line>', 'noremap'],
+    \['<C-s>', '<denite:do_action:split>', 'noremap'],
+    \['<C-v>', '<denite:do_action:vsplit>', 'noremap'],
+    \['<C-r>', '<denite:do_action:switch>', 'noremap'],
+\]
+for each in _mode_mappings
+    call denite#custom#map('insert', each[0], each[1], each[2])
+    call denite#custom#map('normal', each[0], each[1], each[2])
+endfor
 
-autocmd FileType unite call s:unite_settings()
-function! s:unite_settings()
-    nmap <buffer> <ESC> <Plug>(unite_exit)
-endfunction
+" insert mode mappings
+call denite#custom#map('insert', '<Esc>', '<denite:enter_mode:normal>', 'noremap')
+" normal mode mappings
+"
 
 
 " FSwitch | https://github.com/vim-scripts/FSwitch
