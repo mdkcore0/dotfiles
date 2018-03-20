@@ -232,19 +232,3 @@ augroup python_files
     autocmd!
     autocmd BufRead,BufNew *.py execute "IndentGuidesEnable"
 augroup END
-
-
-" vim-flake8
-map <F10> :call Flake8()<cr>
-let g:flake8_show_in_gutter=1
-let g:flake8_quickfix_location="below"
-highlight link Flake8_Error WarningMsg
-highlight link Flake8_Warning WarningMsg
-highlight link Flake8_Complexity WarningMsg
-highlight link Flake8_Naming WarningMsg
-highlight link Flake8_PyFlake WarningMsg
-let g:flake8_error_marker='EE'
-let g:flake8_warning_marker='WW'
-let g:flake8_pyflake_marker='FF'
-let g:flake8_complexity_marker='CC'
-let g:flake8_naming_marker='NN'
