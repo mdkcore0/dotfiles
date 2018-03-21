@@ -157,7 +157,7 @@ set list listchars=tab:\└─,trail:•,extends:»,precedes:«,nbsp:×
 " completion menu conf
 set conceallevel=2
 set concealcursor=vin
-set completeopt=menu,menuone,longest
+set completeopt=menu,menuone,longest,preview
 set pumheight=20 " Limit popup menu height
 
 highlight clear SignColumn

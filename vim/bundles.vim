@@ -20,8 +20,21 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'easymotion/vim-easymotion'
 
 
-" YouCompleteMe | https://github.com/Valloric/YouCompleteMe
-Plugin 'Valloric/YouCompleteMe'
+if has('nvim')
+    " python specific
+    " jedi | https://github.com/davidhalter/jedi
+    Plugin 'davidhalter/jedi'
+    " deoplete-jedi | https://github.com/zchee/deoplete-jedi
+    Plugin 'zchee/deoplete-jedi'
+
+    " c/c++ (clang) specific
+    " deoplete-clang2 | https://github.com/tweekmonster/deoplete-clang2
+    Plugin 'tweekmonster/deoplete-clang2'
+
+    " deoplete.nvim | https://github.com/Shougo/deoplete.nvim
+    " run after PluginInstall: UpdateRemotePlugins
+    Plugin 'Shougo/deoplete.nvim'
+endif
 
 
 " UltiSnips dependencies
@@ -108,15 +121,12 @@ endif
 let g:EasyMotion_leader_key = '<Leader>'
 
 
-" YouCompleteMe | https://github.com/Valloric/YouCompleteMe
-"let g:ycm_key_invoke_completion = '<C-]>'
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_add_preview_to_completeopt = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_error_symbol = '‣'
-let g:ycm_warning_symbol = '×'
-nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
-
+" deoplete-jedi | https://github.com/zchee/deoplete-jedi
+let g:deoplete#sources#jedi#show_docstring = 1
+" deoplete.nvim | https://github.com/Shougo/deoplete.nvim
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
+autocmd CompleteDone * silent! pclose!
 
 " UltiSnips | https://github.com/SirVer/ultisnips
 let g:UltiSnipsExpandTrigger="<C-l>"
