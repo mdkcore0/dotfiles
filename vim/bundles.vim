@@ -105,6 +105,10 @@ Plugin 'nathanaelkane/vim-indent-guides'
 " vim-flake8 | https://github.com/nvie/vim-flake8
 Plugin 'nvie/vim-flake8'
 
+
+" ale | https://github.com/w0rp/ale
+Plugin 'w0rp/ale'
+
 call vundle#end()
 filetype plugin indent on
 
@@ -117,6 +121,8 @@ if has('nvim')
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#show_close_button = 0
     let g:airline#extensions#tabline#show_buffers = 0
+    " turning on ale integration
+    let g:airline#extensions#ale#enabled = 1
 endif
 
 " EasyMotion | https://github.com/Lokaltog/vim-easymotion
@@ -244,3 +250,11 @@ augroup python_files
     autocmd!
     autocmd BufRead,BufNew *.py execute "IndentGuidesEnable"
 augroup END
+
+
+" ale | https://github.com/w0rp/ale
+let g:ale_completion_enabled = 0
+let g:ale_sign_column_always = 1
+let g:ale_sign_error = '‣'
+let g:ale_sign_warning = '×'
+let g:ale_set_highlights = 0
