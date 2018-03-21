@@ -37,11 +37,13 @@ if has('nvim')
 endif
 
 
-" UltiSnips dependencies
+" neosnippet dependencies
 " https://github.com/honza/vim-snippets
 Plugin 'honza/vim-snippets'
-" UltiSnips | https://github.com/SirVer/ultisnips
-Plugin 'SirVer/ultisnips'
+" neosnippet.vim | https://github.com/shougo/neosnippet.vim
+Plugin 'shougo/neosnippet.vim'
+" neosnippet-snippets | https://github.com/Shougo/neosnippet-snippets
+Plugin 'shougo/neosnippet-snippets'
 
 
 " vim-solarized | https://github.com/altercation/vim-colors-solarized
@@ -128,11 +130,11 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 autocmd CompleteDone * silent! pclose!
 
-" UltiSnips | https://github.com/SirVer/ultisnips
-let g:UltiSnipsExpandTrigger="<C-l>"
-let g:UltiSnipsListSnippets="<C-h>"
-let g:UltiSnipsJumpForwardTrigger="<C-j>"
-let g:UltiSnipsJumpBackwardTrigger="<C-k>"
+" neosnippet.vim | https://github.com/shougo/neosnippet.vim
+let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 " vim-solarized | https://github.com/altercation/vim-colors-solarized
 syntax enable
