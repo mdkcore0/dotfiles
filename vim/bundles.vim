@@ -195,7 +195,7 @@ nnoremap <leader>h :Denite -buffer-name=buffer buffer<cr>
 nnoremap <leader>y :Denite -buffer-name=yank neoyank<cr>
 nnoremap <leader>/ :Denite -buffer-name=grep grep:.<cr>
 " install exuberant-ctags
-nnoremap <leader>o :Denite -buffer-name=outline -split=vertical -winwidth=60 -default-action=open outline<cr>
+nnoremap <leader>o :Denite -buffer-name=outline -split=vertical -winwidth=60 -default-action=tabswitch outline<cr>
 " XXX
 "nnoremap <leader>s :Unite -no-split session<cr>
 
@@ -258,3 +258,5 @@ let g:ale_sign_column_always = 1
 let g:ale_sign_error = '‣'
 let g:ale_sign_warning = '×'
 let g:ale_set_highlights = 0
+nmap <silent> <S-F6> <Plug>(ale_previous_wrap)
+nmap <silent> <F6> <Plug>(ale_next_wrap)
