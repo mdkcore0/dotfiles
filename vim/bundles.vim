@@ -109,6 +109,12 @@ Plugin 'nvie/vim-flake8'
 " ale | https://github.com/w0rp/ale
 Plugin 'w0rp/ale'
 
+
+" fzf.vim | https://github.com/junegunn/fzf.vim
+set rtp+=~/downloads/GIT/fzf
+Plugin 'junegunn/fzf.vim'
+
+
 call vundle#end()
 filetype plugin indent on
 
