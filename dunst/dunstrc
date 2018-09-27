@@ -1,5 +1,5 @@
 [global]
-    font = PragmataPro for Powerline 10
+    font = Input 10
 
     allow_markup = yes
     format = "<b>%s</b> (<i>%a</i>)\n\n%b"
