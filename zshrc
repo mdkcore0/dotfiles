@@ -5,9 +5,6 @@ DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Customize to your needs...
-source $HOME/.profile
-
 # NOTE: do not forget to add fasd to your PATH
 plugins=(vi-mode vundle colored-man fasd extract)
 
@@ -15,6 +12,9 @@ plugins=(vi-mode vundle colored-man fasd extract)
 fpath=($HOME/downloads/GIT/zsh-completions/src $fpath)
 
 source $ZSH/oh-my-zsh.sh
+
+# Customize to your needs...
+source $HOME/.profile
 
 # s | https://github.com/haosdent/s
 source $HOME/downloads/GIT/s/s.sh
