@@ -5,11 +5,8 @@ DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# virtualenv + virtualenvwrapper | XXX not using at home right now, remove?
-#VIRTUALENVWRAPPER_PYTHON=/opt/local/bin/python2.7
-#WORKON_HOME="~/.envs"
-#source /opt/local/bin/virtualenvwrapper.sh-2.7
-#export VIRTUALENVWRAPPER_VIRTUALENV=/opt/local/bin/virtualenv-2.7
+# Customize to your needs...
+source $HOME/.profile
 
 # NOTE: do not forget to add fasd to your PATH
 plugins=(vi-mode vundle colored-man fasd extract)
@@ -18,9 +15,6 @@ plugins=(vi-mode vundle colored-man fasd extract)
 fpath=($HOME/downloads/GIT/zsh-completions/src $fpath)
 
 source $ZSH/oh-my-zsh.sh
-
-# Customize to your needs...
-source $HOME/.profile
 
 # s | https://github.com/haosdent/s
 source $HOME/downloads/GIT/s/s.sh
