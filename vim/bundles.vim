@@ -1,16 +1,17 @@
 " Installation
-
 filetype off
 call vundle#begin()
 
 " Vundle | https://github.com/VundleVim/Vundle.vim
 Plugin 'gmarik/Vundle.vim'
 
+
 if has('nvim')
     " vim-airline | https://github.com/vim-airline/vim-airline
     Plugin 'vim-airline/vim-airline'
     Plugin 'vim-airline/vim-airline-themes'
 endif
+
 
 " GitGutter | https://github.com/airblade/vim-gitgutter
 Plugin 'airblade/vim-gitgutter'
@@ -114,15 +115,13 @@ Plugin 'w0rp/ale'
 set rtp+=~/downloads/GIT/fzf
 Plugin 'junegunn/fzf.vim'
 
-
 call vundle#end()
 filetype plugin indent on
 
-" Configuration
 
+" Configuration
 if has('nvim')
     " vim-airline | https://github.com/vim-airline/vim-airline
-    let g:python2_host_prog = '/usr/local/bin/python'
     let g:airline_powerline_fonts = 1
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#show_close_button = 0
@@ -130,6 +129,7 @@ if has('nvim')
     " turning on ale integration
     let g:airline#extensions#ale#enabled = 1
 endif
+
 
 " EasyMotion | https://github.com/Lokaltog/vim-easymotion
 let g:EasyMotion_leader_key = '<Leader>'
@@ -142,11 +142,13 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 autocmd CompleteDone * silent! pclose!
 
+
 " neosnippet.vim | https://github.com/shougo/neosnippet.vim
 let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
+
 
 " vim-solarized | https://github.com/altercation/vim-colors-solarized
 syntax enable
@@ -227,7 +229,6 @@ endfor
 " insert mode mappings
 call denite#custom#map('insert', '<Esc>', '<denite:enter_mode:normal>', 'noremap')
 " normal mode mappings
-"
 
 
 " FSwitch | https://github.com/vim-scripts/FSwitch
@@ -250,6 +251,7 @@ let g:indent_guides_guide_size = 1
 let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=black
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=black
+
 
 " just autoload on python files; toggle with <leader>ig
 augroup python_files
