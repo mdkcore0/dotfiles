@@ -166,6 +166,8 @@ alias make='bear -a make'
 # tmux window ;)
 alias bell='echo -n "\007"' # or 'tput bel'
 
+alias tig='TERM=screen-256color tig'
+
 # global git exports; really they need to be empty values
 export GIT_PS1_SHOWDIRTYSTATE=mdk
 export GIT_PS1_SHOWSTASHSTATE=mdk
