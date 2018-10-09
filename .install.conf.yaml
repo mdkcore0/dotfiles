@@ -7,8 +7,6 @@
     ~/.config/dunst: dunst
     # git
     ~/.gitconfig: gitconfig
-    # mplayer
-    ~/.mplayer: mplayer
     # powerline
     ~/.config/powerline: powerline
     # tmux
@@ -20,17 +18,17 @@
     ~/.bashrc: bashrc
     ~/.zshrc: zshrc
     # vim and its bundles
-    ~/.vimrc: vim/vimrc
+    ~/.vimrc: nvim/init.vim
     ~/.vim/bundles.vim:
         create: true
-        path: vim/bundles.vim
+        path: nvim/bundles.vim
     # neovim
     ~/.config/nvim/bundles.vim:
         create: true
-        path: vim/bundles.vim
+        path: nvim/bundles.vim
     ~/.config/nvim/init.vim:
         create: true
-        path: vim/vimrc
+        path: nvim/init.vim
     #~/.asoundrc: asoundrc
     ~/.pythonrc: pythonrc
     # tig
