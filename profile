@@ -102,38 +102,26 @@ _git_please() {
     __git_remotes
 }
 
-# definicoes especificas por usuario
-if [ "$USER" = mdk ]
+# ssh keys (and gpg) on keychain
+# add keys after '--quick'
+eval `keychain --eval --quiet --agents "ssh,gpg" --quick`
+
+# PATHs definition
+PATH="$HOME/.bin:$PATH"
+PATH="/sbin:/usr/sbin:$PATH"
+
+export PYTHONPATH=$HOME/downloads/GIT/powerline
+PATH="$HOME/downloads/GIT/powerline/scripts:$PATH"
+
+export POWERLINE_COMMAND=powerline
+pdpid=$(pgrep -f powerline-daemon)
+if [ -z $pdpid ]
 then
-    # ssh keys (and gpg) on keychain
-    # add keys after '--quick'
-    eval `keychain --eval --quiet --agents "ssh,gpg" --quick`
-
-    PATH="$HOME/.bin:/sbin:/usr/sbin:$PATH"
-
-    # XXX add function to enable/disable Android SDK/NDK devel
-    PATH="$HOME/projects/android/android-sdk/platform-tools:$HOME/projects/android/android-sdk/tools:$HOME/projects/android/android-ndk:$PATH"
-    PATH="$HOME/downloads/GIT/powerline/scripts:$PATH" # powerline
-    export POWERLINE_COMMAND=powerline
-    export ANDROID_SDK_ROOT="/home/mdk/projects/android/android-sdk"
-    export SDK_ROOT="/home/mdk/projects/android/android-sdk"
-    export ANDROID_NDK_ROOT="/home/mdk/projects/android/android-ndk"
-    export NDK_ROOT="/home/mdk/projects/android/android-ndk"
-    export NDK_CCACHE=ccache
-    export JAVA_HOME="/usr/lib64/java"
-    #
-
-    # TV shows and movies :D
-    export TV_SHOWS="/media/KODI/TV_Shows"
-    export MOVIES="/media/KODI/Movies"
-
-    # DROPCORE ;)
-    export DROPCORE="$HOME/DockZ/DropCore"
-
-    # mplayer things
-    alias mplayer='mplayer -ass -ao alsa -channels 6'
-    alias mplayer-hdmi='mplayer -ao alsa:device=hw=0.3 -fs -subfont-text-scale 3.5'
+    powerline-daemon -q&
 fi
+
+# DROPCORE ;)
+export DROPCORE="$HOME/DockZ/DropCore"
 
 . ~/.extras/git-prompt.sh # symbolic link to the git repository completion script
 
@@ -155,25 +143,21 @@ alias nls='ls -1 | wc -l'
 alias tls='ls -ot --color --ignore=\*~ | head | grep -v "total" | tr -s " " | cut -d" " -f5- | column -t'
 alias als='ls -la'
 
-alias bkpchrome='rm -rf ~/.config/chromium_BKP/; cp -r ~/.config/chromium{,_BKP}'
 alias wget='wget -c'
 
 alias cmake='cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON'
-alias vless='/usr/share/vim/vim74/macros/less.sh'
 alias make='bear -a make'
 
 # simple bell, usefull when waiting the completion of something on another
 # tmux window ;)
 alias bell='echo -n "\007"' # or 'tput bel'
 
-alias tig='TERM=screen-256color tig'
-
 # global git exports; really they need to be empty values
 export GIT_PS1_SHOWDIRTYSTATE=mdk
 export GIT_PS1_SHOWSTASHSTATE=mdk
 export GIT_PS1_SHOWUPSTREAM="auto"
 
-export EDITOR="vim"
+export EDITOR="nvim"
 export GIT_EDITOR=$EDITOR
 export SVN_EDITOR=$GIT_EDITOR
 
@@ -185,3 +169,10 @@ then
 fi
 
 eval $(dircolors ~/downloads/GIT/dircolors-solarized/dircolors.256dark)
+
+# my own completions
+source $HOME/.completions/*
+
+# pass
+export PASSWORD_STORE_DIR=$HOME/DockZ/ownButt/password-store
+export PASSWORD_STORE_GIT=$HOME/DockZ/ownButt/password-store
