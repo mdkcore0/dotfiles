@@ -133,7 +133,6 @@ set shiftwidth=4
 set expandtab
 set softtabstop=4
 set laststatus=2
-set encoding=utf8
 set ffs=unix,dos,mac
 set clipboard+=unnamedplus
 set noshowmode

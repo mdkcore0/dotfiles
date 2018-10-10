@@ -115,6 +115,10 @@ Plugin 'w0rp/ale'
 set rtp+=~/downloads/GIT/fzf
 Plugin 'junegunn/fzf.vim'
 
+
+" vim-devicons | https://github.com/ryanoasis/vim-devicons
+Plugin 'ryanoasis/vim-devicons'
+
 call vundle#end()
 filetype plugin indent on
 
@@ -268,3 +272,8 @@ let g:ale_sign_warning = '×'
 let g:ale_set_highlights = 0
 nmap <silent> <S-F6> <Plug>(ale_previous_wrap)
 nmap <silent> <F6> <Plug>(ale_next_wrap)
+
+
+" vim-devicons | https://github.com/ryanoasis/vim-devicons
+" uname -s
+let g:WebDevIconsOS = 'Linux'
