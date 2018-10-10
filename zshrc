@@ -1,3 +1,5 @@
+export PATH="$HOME/.bin:$PATH"
+export EDITOR="nvim"
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/downloads/GIT/oh-my-zsh
 
