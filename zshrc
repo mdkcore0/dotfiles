@@ -1,4 +1,7 @@
 export PATH="$HOME/.bin:$PATH"
+# pip things
+export PATH="$HOME/.local/bin:$PATH"
+
 export EDITOR="nvim"
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/downloads/GIT/oh-my-zsh
@@ -8,7 +11,7 @@ COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # NOTE: do not forget to add fasd to your PATH
-plugins=(vi-mode vundle colored-man fasd extract)
+plugins=(vi-mode vundle fasd extract colored-man-pages)
 
 # zsh-completions | https://github.com/zsh-users/zsh-completions
 fpath=($HOME/downloads/GIT/zsh-completions/src $fpath)
@@ -92,12 +95,36 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="--preview '$HOME/.config/ranger/scope.sh {}' \
     --bind 'ctrl-t:toggle-preview'"
 
-fzf-history-widget-accept() {
-    fzf-history-widget
-    zle accept-line
+# based on https://github.com/junegunn/fzf/issues/477#issuecomment-444053054
+fzf-history-widget-accept-or-edit() {
+    local selected num
+    setopt localoptions noglobsubst noposixbuiltins pipefail 2> /dev/null
+    selected=( $(fc -rl 1 |
+        FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} $FZF_DEFAULT_OPTS -n2..,.. --tiebreak=index --bind=ctrl-r:toggle-sort --expect=ctrl-e $FZF_CTRL_R_OPTS --query=${(qqq)LBUFFER} +m" $(__fzfcmd))
+    )
+
+    local ret=$?
+    if [ -n "$selected" ]; then
+        local accept=0
+        if [[ $selected[1] = ctrl-e ]]; then
+            accept=1
+            shift selected
+        fi
+
+        num=$selected[1]
+        if [ -n "$num" ]; then
+            zle vi-fetch-history -n $num
+            [[ $accept = 0 ]] && zle accept-line
+        fi
+    fi
+
+    zle reset-prompt
+    return $ret
 }
-zle -N fzf-history-widget-accept
-bindkey '^F' fzf-history-widget-accept # control-f
+zle -N fzf-history-widget-accept-or-edit
+# control-f; enter run directly, control-e edit command
+bindkey '^F' fzf-history-widget-accept-or-edit
 
 # TODO bindings should be done after setting all plugins
-bindkey "^R" history-incremental-pattern-search-backward # control + r
+# control + r
+bindkey "^R" history-incremental-pattern-search-backward
