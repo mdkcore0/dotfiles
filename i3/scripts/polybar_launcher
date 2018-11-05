@@ -1,0 +1,7 @@
+#!/bin/sh
+
+while killall polybar ; do true ; done
+
+for m in $(polybar --list-monitors | cut -d":" -f1 | tac); do
+    MONITOR=$m polybar --reload primary &
+done

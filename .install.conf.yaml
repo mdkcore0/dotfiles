@@ -37,6 +37,8 @@
     ~/.weechat: weechat
     # cVim
     ~/.cvimrc: cvimrc
+    # polybar
+    ~/.config/polybar: polybar
 - shell:
     # mutt
     -
