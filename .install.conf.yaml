@@ -13,6 +13,8 @@
     ~/.tmux.conf: tmux.conf
     # Xresources
     ~/.Xresources: Xresources
+    # XCompose
+    ~/.XCompose: XCompose
     # xinitrc
     ~/.xinitrc: xinitrc
     # profile, bashrc and zshrc
@@ -45,6 +47,8 @@
     ~/.config/ranger/rc.conf:
         create: true
         path: ranger/rc.conf
+    # xkb mappings
+    ~/.config/xkb: xkb
 - shell:
     # mutt
     -
