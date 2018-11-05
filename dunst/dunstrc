@@ -1,5 +1,5 @@
 [global]
-    font = Input 10
+    font = Input Nerd Font 10
 
     allow_markup = yes
     format = "<b>%s</b> (<i>%a</i>)\n\n%b"
@@ -29,6 +29,7 @@
     browser = xdg-open
     icon_position = right
     icon_folders = /usr/share/icons/oxygen/32x32/status/:/usr/share/icons/oxygen/32x32/devices
+    max_icon_size = 128
 
 [frame]
     width = 1
