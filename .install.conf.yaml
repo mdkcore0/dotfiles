@@ -39,6 +39,10 @@
     ~/.cvimrc: cvimrc
     # polybar
     ~/.config/polybar: polybar
+    # ranger
+    ~/.config/ranger/rc.conf:
+        create: true
+        path: ranger/rc.conf
 - shell:
     # mutt
     -
@@ -130,3 +134,7 @@
     -
       - git clone --recursive https://github.com/junegunn/fzf.git ~/downloads/GIT/fzf
       - "Cloning fzf dependency"
+    # ranger
+    -
+      - ranger --copy-config=scope
+      - "Setting up scope.sh (ranger)"
