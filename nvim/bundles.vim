@@ -167,6 +167,7 @@ call denite#custom#source(
     \"buffer,file,file_mru,file_rec,grep",
     \"matchers", ['matcher_fuzzy'])
 call denite#custom#source('z', 'sorters', ['sorter_rank'])
+    "\'start_filter': v:true,
 call denite#custom#option('_', {
     \'prompt': '',
     \'smartcase': v:true,
@@ -211,10 +212,11 @@ nnoremap <leader>o :Denite -buffer-name=outline -split=vertical -winwidth=60 -de
 " XXX
 "nnoremap <leader>s :Unite -no-split session<cr>
 
-call denite#custom#alias('source', 'file_rec/git', 'file_rec')
-call denite#custom#var('file_rec/git', 'command',
-      \['git', 'ls-files', '-co', '--exclude-standard'])
-nnoremap <silent>,g :Denite -buffer-name=git-grep file_rec/git<cr>
+" TODO
+"call denite#custom#alias('source', 'file_rec/git', 'file_rec')
+"call denite#custom#var('file_rec/git', 'command',
+      "\['git', 'ls-files', '-co', '--exclude-standard'])
+"nnoremap <silent>,g :Denite -buffer-name=git-grep file_rec/git<cr>
 
 " global mappings
 call denite#custom#map('_', '<CR>', '<denite:do_action:tabopen>', 'noremap')
@@ -261,6 +263,7 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=black
 augroup python_files
     autocmd!
     autocmd BufRead,BufNew *.py execute "IndentGuidesEnable"
+    autocmd FileType python map <buffer> <F10> :call Flake8()<CR>
 augroup END
 
 
