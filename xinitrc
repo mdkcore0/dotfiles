@@ -11,6 +11,9 @@ sysmodmap=/etc/X11/xinit/.Xmodmap
 [ -f $userresources ] && /usr/bin/xrdb -merge $userresources
 [ -f $usermodmap ] && /usr/bin/xmodmap $usermodmap
 
+# adjust keyboard
+xkbcomp -I$HOME/.config/xkb ~/.config/xkb/map $DISPLAY
+
 # start i3
 if [ -z "$DESKTOP_SESSION" -a -x /usr/bin/ck-launch-session ]; then
     exec ck-launch-session dbus-launch --exit-with-session /usr/bin/i3
