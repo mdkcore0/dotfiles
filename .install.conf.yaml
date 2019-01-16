@@ -56,6 +56,9 @@
         - wget https://raw.githubusercontent.com/jonas/tig/master/contrib/vim.tigrc -N -P ~/.extras/
         - "Downloading TIG vim keybindings dependency"
     -
+        - git clone --recursive https://github.com/petervanderdoes/gitflow-avh.git ~/downloads/GIT/gitflow-avh
+        - "Cloning GITFLOW-AVH dependency"
+    -
         - git clone --recursive https://github.com/petervanderdoes/git-flow-completion ~/downloads/GIT/git-flow-completion
         - "Cloning GIT-FLOW-COMPLETION dependency"
     # powerline
