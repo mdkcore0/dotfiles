@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Simple pactl wrapper for i3
-# https://github.com/rodrigogolive/dotfiles | http://blog.thecoreme.org
+# https://github.com/mdkcore0/dotfiles | http://blog.thecoreme.org
 
 # settings
 VOLINCDEC=5
