@@ -7,8 +7,6 @@
     ~/.config/dunst: dunst
     # git
     ~/.gitconfig: gitconfig
-    # powerline
-    ~/.config/powerline: powerline
     # tmux
     ~/.tmux.conf: tmux.conf
     # Xresources
@@ -67,10 +65,6 @@
     -
         - git clone --recursive https://github.com/petervanderdoes/git-flow-completion ~/downloads/GIT/git-flow-completion
         - "Cloning GIT-FLOW-COMPLETION dependency"
-    # powerline
-    -
-        - git clone --recursive https://github.com/powerline/powerline.git ~/downloads/GIT/powerline
-        - "Cloning POWERLINE dependency (Run it afterwards: python setup.py build; powerline-daemon --replace)"
     # tmux plugin manager
     -
         - git clone --recursive https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm

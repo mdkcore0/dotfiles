@@ -32,12 +32,6 @@ source $HOME/downloads/GIT/zce.zsh/zce.zsh
 bindkey -M vicmd "f" zce
 zstyle ':zce:*' bg 'fg=242'
 
-# poweline
-if [ -n "$DISPLAY" ]
-then
-    source $HOME/downloads/GIT/powerline/powerline/bindings/zsh/powerline.zsh
-fi
-
 # hide commands from history that starts with a space
 export HIST_IGNORE_SPACE=1
 

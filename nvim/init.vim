@@ -104,12 +104,6 @@ filetype plugin indent on
 source $HOME/.vim/bundles.vim
 
 
-if !has('nvim')
-    " powerline
-    set rtp+=$HOME/downloads/GIT/powerline/powerline/bindings/vim
-endif
-
-
 " basic setup
 syntax on
 set mouse-=a

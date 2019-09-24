@@ -117,16 +117,6 @@ fi
 PATH="$HOME/.bin:$PATH"
 PATH="/sbin:/usr/sbin:$PATH"
 
-export PYTHONPATH=$HOME/downloads/GIT/powerline
-PATH="$HOME/downloads/GIT/powerline/scripts:$PATH"
-
-export POWERLINE_COMMAND=powerline
-pdpid=$(pgrep -f powerline-daemon)
-if [ -z $pdpid ]
-then
-    powerline-daemon -q&
-fi
-
 # DROPCORE ;)
 export DROPCORE="$HOME/DockZ/DropCore"
 
