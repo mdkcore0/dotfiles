@@ -47,10 +47,6 @@ Plugin 'shougo/neosnippet.vim'
 Plugin 'shougo/neosnippet-snippets'
 
 
-" vim-solarized | https://github.com/altercation/vim-colors-solarized
-Plugin 'altercation/vim-colors-solarized'
-
-
 " nerdcommenter | https://github.com/scrooloose/nerdcommenter
 Plugin 'scrooloose/nerdcommenter'
 
@@ -152,12 +148,6 @@ let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-
-" vim-solarized | https://github.com/altercation/vim-colors-solarized
-syntax enable
-set background=dark
-colorscheme solarized
 
 
 " denite.nvim | https://github.com/Shougo/denite.nvim
