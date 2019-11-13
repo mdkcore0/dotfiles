@@ -47,6 +47,10 @@
         path: ranger/rc.conf
     # xkb mappings
     ~/.config/xkb: xkb
+    # alacritty
+    ~/.config/alacritty/alacritty.yml:
+        create: true
+        path: alacritty/alacritty.yml
 - shell:
     # mutt
     -

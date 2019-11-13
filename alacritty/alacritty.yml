@@ -1,0 +1,20 @@
+font:
+  normal:
+    family: Input Nerd Font
+  size: 8.5
+  glyph_offset:
+    y: -1
+
+background_opacity: 1.0
+
+selection:
+  save_to_clipboard: true
+
+dynamic_title: true
+
+live_config_reload: true
+
+mouse:
+  hide_when_typing: true
+  url:
+    modifiers: Control

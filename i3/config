@@ -21,7 +21,7 @@ floating_modifier $mod
 hide_edge_borders both
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id st
+bindsym $mod+Return exec --no-startup-id alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
