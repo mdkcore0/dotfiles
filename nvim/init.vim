@@ -138,9 +138,6 @@ set clipboard+=unnamedplus
 set noshowmode
 
 
-set t_ut=
-
-
 " use # as comment on python files
 au BufRead,BufNewFile *.py set nosmartindent
 
