@@ -162,3 +162,8 @@ assign [class="^Steam$"]        10
 bindsym XF86AudioRaiseVolume exec "$HOME/.i3/scripts/pactl-wrapper inc"
 bindsym XF86AudioLowerVolume exec "$HOME/.i3/scripts/pactl-wrapper dec"
 bindsym XF86AudioMute exec "$HOME/.i3/scripts/pactl-wrapper toggle"
+
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
