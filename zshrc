@@ -1,58 +1,71 @@
-export PATH="$HOME/.bin:$PATH"
-# pip things
-export PATH="$HOME/.local/bin:$PATH"
-
+# XXX split zshrc?
 export EDITOR="nvim"
 # Path to your oh-my-zsh configuration.
-export ZSH=$HOME/downloads/GIT/oh-my-zsh
+export ZSH=$HOME/Downloads/GIT/oh-my-zsh
 
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 VIRTUAL_ENV_DISABLE_PROMPT="true"
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_ALL_DUPS
 
-# NOTE: do not forget to add fasd to your PATH
-plugins=(vi-mode fasd extract colored-man-pages pyenv pass)
+# pyenv (.zprofile?)
+export PYENV_ROOT="$HOME/Downloads/GIT/pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+plugins=(vi-mode extract colored-man-pages pyenv pass fzf zoxide gpg-agent)
 
 # zsh-completions | https://github.com/zsh-users/zsh-completions
-fpath=($HOME/downloads/GIT/zsh-completions/src $fpath)
+fpath=($HOME/Downloads/GIT/zsh-completions/src $fpath)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 source $HOME/.profile
 
-# s | https://github.com/haosdent/s
-source $HOME/downloads/GIT/s/s.sh
-
 # XXX start using a zsh plugin manager (oh-my-zsh has so many old plugins)
 # git-flow-completion | https://github.com/petervanderdoes/git-flow-completion
-source $HOME/downloads/GIT/git-flow-completion/git-flow-completion.zsh
+source $HOME/Downloads/GIT/git-flow-completion/git-flow-completion.zsh
 
-source $HOME/downloads/GIT/zce.zsh/zce.zsh
+source $HOME/Downloads/GIT/zce.zsh/zce.zsh
 bindkey -M vicmd "f" zce
 zstyle ':zce:*' bg 'fg=242'
 
+# powerlevel9k; only if on X
+if [ -n "$DISPLAY" ]
+then
+    # set powerlevel9k mode
+    POWERLEVEL9K_MODE=nerdfont-v3
+
+    # prompt configuration
+    POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir dir_writable)
+    # ip os_icon ssh pyenv? TODO
+    POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs pyenv
+        vcs vi_mode)
+
+    # context segment TODO
+    DEFAULT_USER=$USER
+    POWERLEVEL9K_ALWAYS_SHOW_USER=true
+
+    # dir segment
+    POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+    POWERLEVEL9K_SHORTEN_DELIMITER=""
+    POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
+
+    # status segment
+    POWERLEVEL9K_STATUS_OK=false
+
+    # vcs segment
+    POWERLEVEL9K_SHOW_CHANGESET=true
+
+    source $HOME/Downloads/GIT/powerlevel10k/powerlevel9k.zsh-theme
+fi
+
 # hide commands from history that starts with a space
 export HIST_IGNORE_SPACE=1
-
-# prompt :D
-function _gitPrompt() {
-    git_status=$(__git_ps1 "%s")
-
-    git_status=$(echo $git_status | sed "s/*/ /")
-    git_status=$(echo $git_status | sed "s/>/ /")
-    git_status=$(echo $git_status | sed "s/</ /")
-    # TODO =
-
-    if [[ -n $git_status ]]
-    then
-        export GITPROMPT="$git_status"
-    else
-        unset GITPROMPT
-    fi
-}
-precmd_functions+=(_gitPrompt)
 
 # use same colors from dircolors on complete
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
@@ -73,6 +86,9 @@ bindkey -M vicmd '^r' history-incremental-pattern-search-backward
 bindkey -M vicmd "^[" vi-insert
 bindkey -M viins "^[" vi-cmd-mode
 
+# edit command line contents in $EDITOR
+bindkey -M vicmd E edit-command-line
+
 #damn delay
 KEYTIMEOUT=1
 
@@ -87,8 +103,9 @@ export FZF_DEFAULT_OPTS="--no-mouse \
     --color=bg+:18,bg:0,spinner:6,hl:4 \
     --color=fg:20,header:4,info:3,pointer:6 \
     --color=marker:6,fg+:21,prompt:3,hl+:4"
-export FZF_CTRL_T_OPTS="--preview '$HOME/.config/ranger/scope.sh {} \
-        $(tput cols) $(tput lines) $HOME/.cache/ranger False' \
+# use bat for preview
+export FZF_CTRL_T_OPTS="--preview 'bat \
+    --color=always --style=numbers --line-range=:500 {}' \
     --bind 'ctrl-t:toggle-preview'"
 
 # based on https://github.com/junegunn/fzf/issues/477#issuecomment-444053054
@@ -120,15 +137,15 @@ fzf-history-widget-accept-or-edit() {
     return $ret
 }
 zle -N fzf-history-widget-accept-or-edit
-# control-f; enter run directly, control-e edit command
-bindkey '^F' fzf-history-widget-accept-or-edit
+# control-r; enter run directly, control-e edit command
+bindkey '^R' fzf-history-widget-accept-or-edit
 
-# TODO bindings should be done after setting all plugins
-# control + r
-bindkey "^R" history-incremental-pattern-search-backward
+# XXX bindings should be done after setting all plugins
+# control-f
+bindkey "^F" history-incremental-pattern-search-backward
 
 # Base16 Shell
-BASE16_SHELL="$HOME/downloads/GIT/base16-shell/"
+BASE16_SHELL_PATH="$HOME/Downloads/GIT/base16-shell"
 [ -n "$PS1" ] && \
-    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
-        eval "$("$BASE16_SHELL/profile_helper.sh")"
+  [ -s "$BASE16_SHELL_PATH/profile_helper.sh" ] && \
+    source "$BASE16_SHELL_PATH/profile_helper.sh"
