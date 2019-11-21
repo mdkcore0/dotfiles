@@ -31,7 +31,6 @@
     ~/.config/nvim/init.vim:
         create: true
         path: nvim/init.vim
-    #~/.asoundrc: asoundrc
     ~/.pythonrc: pythonrc
     # tig
     ~/.tigrc: tigrc
