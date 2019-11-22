@@ -169,3 +169,7 @@ source $HOME/.completions/*
 # pass
 export PASSWORD_STORE_DIR=$HOME/DockZ/ownButt/password-store
 export PASSWORD_STORE_GIT=$HOME/DockZ/ownButt/password-store
+
+# use clang as c/c++ compiler as default
+export CC=clang
+export CXX=clang++
