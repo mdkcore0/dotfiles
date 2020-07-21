@@ -12,8 +12,6 @@
     ~/.gitconfig: gitconfig
     # tmux
     ~/.tmux.conf: tmux.conf
-    # Xresources
-    ~/.Xresources: Xresources
     # XCompose
     ~/.XCompose: XCompose
     # xinitrc
