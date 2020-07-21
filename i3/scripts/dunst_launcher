@@ -1,3 +1,20 @@
 #!/bin/sh
 
-echo "all your base are belong to us"
+xresource_color() {
+    xrdb -query | grep "\*$1\:" | awk '{print $NF}'
+}
+
+base00=$(xresource_color color0)
+base01=$(xresource_color color18)
+base03=$(xresource_color color8)
+base05=$(xresource_color color7)
+base07=$(xresource_color color15)
+base08=$(xresource_color color1)
+
+while killall dunst ; do true ; done
+
+dunst \
+    -lb "$base00" -lf "$base03" -lfr "$base05" \
+    -nb "$base01" -nf "$base05" -nfr "$base05" \
+    -cb "$base08" -cf "$base07" -cfr "$base05" \
+    -sep_color "$base05" &
