@@ -1,0 +1,22 @@
+configuration {
+    font: "Input Nerd Font 12";
+
+    combi-modi: "window,run";
+    modi: "combi";
+    display-run: "";
+    display-window: "";
+
+    monitor: "-4";
+
+    matching: "fuzzy";
+
+    theme: "fzf";
+    cycle: false;
+    scroll-method: 1;
+
+    kb-move-word-back: "Control+b";
+    kb-move-word-forward: "Control+f";
+    kb-move-char-back: "Left";
+    kb-move-char-forward: "Right";
+}
+/* vim:ft=css

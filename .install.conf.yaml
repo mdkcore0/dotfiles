@@ -4,7 +4,10 @@
     ~/.mutt: mutt
     # i3wm
     ~/.i3: i3
+    # dunst
     ~/.config/dunst: dunst
+    # rofi
+    ~/.config/rofi: rofi
     # git
     ~/.gitconfig: gitconfig
     # tmux
