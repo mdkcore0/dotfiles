@@ -29,6 +29,8 @@ fi
 # custom key bindings
 xbindkeys
 
+unset PINENTRY_USER_DATA
+
 # start i3
 if [ -z "$DESKTOP_SESSION" -a -x /usr/bin/ck-launch-session ]; then
     exec ck-launch-session dbus-launch --exit-with-session /usr/bin/i3

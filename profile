@@ -111,7 +111,7 @@ export GPG_TTY=$(tty)
 if [ -x "$(which gpg-connect-agent)"  ]; then
     gpg-connect-agent updatestartuptty /bye >& /dev/null
 fi
-#
+export PINENTRY_USER_DATA="USE_CURSES=1"
 
 # PATHs definition
 PATH="$HOME/.bin:$PATH"
