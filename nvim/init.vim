@@ -46,11 +46,13 @@
 "   <leader>ig = toggle indent guides
 " // = search visual selected text
 " C-_ = insert pydocstring (normal mode)
-" UltiSnips
-"   C-l = expand
-"   C-h = list
-"   C-j = jump forward
-"   C-k = jump backward
+" neosnippet
+"   C-k = expand or jump
+
+
+if has('nvim')
+    let g:python3_host_prog='$HOME/.pyenv/versions/py3nvim/bin/python3'
+endif
 
 
 set nocompatible
