@@ -1,8 +1,3 @@
-# TODO wallpaper
-# XXX play video on X11 root window: mplayer VID_20140320_184029.mp4 -wid 0xb8 -loop
-# XXX set wallpaper: convert borderlands.png -resize "1920x1080^" -gravity center -crop 1920x1080+0+0 +repage /tmp/wallpaper.png && display -size 1920x1080 -window root /tmp/wallpaper.png 
-# XXX compton https://github.com/chjj/compton
-
 # default modifier; Mod1 = Alt, Mod4 = Super
 set $mod Mod1
 
@@ -21,7 +16,7 @@ floating_modifier $mod
 hide_edge_borders both
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id alacritty
+bindsym $mod+Return exec --no-startup-id WINIT_X11_SCALE_FACTOR=1 alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -141,9 +136,8 @@ for_window [window_role="task_dialog"] floating enable
 for_window [title="qmlscene"]       floating enable
 
 # lock screen
-# TODO startCmd keygen clear (ssh-agent)
 bindsym $mod+Ctrl+l exec xlock -xinerama
-bindsym $mod+Ctrl+k exec xlock -mode blank
+bindsym $mod+Ctrl+k exec power lock-only
 
 # mouse things
 focus_follows_mouse no
@@ -157,11 +151,6 @@ exec --no-startup-id nm-applet
 
 # workspace assigns
 assign [class="^Steam$"]        10
-
-# other bindings
-bindsym XF86AudioRaiseVolume exec "$HOME/.i3/scripts/pactl-wrapper inc"
-bindsym XF86AudioLowerVolume exec "$HOME/.i3/scripts/pactl-wrapper dec"
-bindsym XF86AudioMute exec "$HOME/.i3/scripts/pactl-wrapper toggle"
 
 # Make the currently focused window a scratchpad
 bindsym $mod+Shift+minus move scratchpad
