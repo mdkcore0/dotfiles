@@ -215,7 +215,7 @@ interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
 format-connected-underline = #9f78e1
-label-connected = %essid%
+label-connected = %essid% (%local_ip%)
 
 format-disconnected =
 ;format-disconnected = <label-disconnected>
@@ -238,7 +238,7 @@ interval = 3.0
 format-connected-underline = #55aa55
 format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%
+label-connected = %ifname% (%local_ip%)
 
 format-disconnected =
 ;format-disconnected = <label-disconnected>
@@ -321,7 +321,6 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 type = internal/battery
 battery = BAT0
 adapter = ADP1
-full-at = 98
 
 format-charging = <animation-charging> <label-charging>
 format-charging-underline = #ffb52a
