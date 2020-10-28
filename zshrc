@@ -9,9 +9,10 @@ export ZSH=$HOME/downloads/GIT/oh-my-zsh
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
+VIRTUAL_ENV_DISABLE_PROMPT="true"
 
 # NOTE: do not forget to add fasd to your PATH
-plugins=(vi-mode vundle fasd extract colored-man-pages)
+plugins=(vi-mode fasd extract colored-man-pages pyenv pass)
 
 # zsh-completions | https://github.com/zsh-users/zsh-completions
 fpath=($HOME/downloads/GIT/zsh-completions/src $fpath)
