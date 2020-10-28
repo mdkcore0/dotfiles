@@ -16,7 +16,7 @@ I've eliminated the concept of HOME/WORK branches, now will create branches per 
 Scripts
 ------
 There are some scripts bundled on my dotfiles (more like "helpers"), related to specific things (e.g. managing audio volume on i3).  
-For other scripts, see my [dotbins repo](https://github.com/mdkcore0/dotbins) ;)
+For other scripts, see my [dotbins repo](https://git.sr.ht/~mdkcore/dotbins) ;)
 
 Note for Slackware users
 ------------------------
