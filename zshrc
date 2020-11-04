@@ -77,16 +77,15 @@ bindkey -M viins "^[" vi-cmd-mode
 KEYTIMEOUT=1
 
 # fzf | https://github.com/junegunn/fzf
-# # TODO test if 'ag' is available
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND='/usr/bin/ag -g ""'
-export FZF_DEFAULT_OPTS="--no-256 \
-    --no-mouse \
+# TODO test if 'rg' is available
+export FZF_DEFAULT_COMMAND='/usr/bin/rg --files""'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_DEFAULT_OPTS="--no-mouse \
     --ansi \
     -0 -1 \
     --color dark,hl:33,hl+:37,fg+:235,bg+:136,fg+:254 \
     --color info:254,prompt:37,spinner:108,pointer:235,marker:235"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="--preview '$HOME/.config/ranger/scope.sh {}' \
     --bind 'ctrl-t:toggle-preview'"
 
