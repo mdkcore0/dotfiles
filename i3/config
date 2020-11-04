@@ -22,7 +22,8 @@ bindsym $mod+Return exec --no-startup-id WINIT_X11_SCALE_FACTOR=1 alacritty
 bindsym $mod+Shift+q kill
 
 # start rofi (a program launcher)
-bindsym $mod+d exec --no-startup-id "rofi -combi-modi window,run -show combi -modi combi -bg #073642 -fg #93a1a1 -hlbg #657b83 -hlfg #fdf6e3 -font Input Nerd Font\ 10"
+bindsym --release $mod+d exec --no-startup-id "rofi -show run"
+bindsym --release $mod+Tab exec --no-startup-id "rofi -show window"
 
 # change focus
 bindsym $mod+$left  focus left
