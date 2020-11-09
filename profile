@@ -1,42 +1,5 @@
 # vim: set filetype=sh:
 
-# super grep, will show grep on 'less' if result be greater than the console height
-function sgrep(){
-    result=$(grep -n --color=always --exclude=\*~ "$@" | sed 's/:/ +/')
-
-    lines=$(echo "${result}" | wc -l)
-
-    if (( $LINES <= $lines + 3 ))
-    then
-        echo "${result}" | less -R
-    else
-        echo "${result}"
-    fi
-}
-
-# ag improved
-alias ag='ag --color-match "30;33" --color-path 35 --color-line-number 32 --color'
-
-# super ag
-function sag() {
-    result=`ag --nobreak --noheading "$@" | sed -e 's/:/ +/' -e 's/:\s*/|/' | column -t -s '|'`
-
-    lines=`echo "${result}" | wc -l`
-
-    cmd="fzf"
-    if [[ `which $cmd &> /dev/null; echo $?` != 0 ]]
-    then
-        cmd="less -R"
-    fi
-
-    if (( $LINES <= $lines + 3 ))
-    then
-        echo "${result}" | eval $cmd
-    else
-        echo "${result}"
-    fi
-}
-
 # super run, will copy to the clipboard a given command as an argument or the last runned command, if no arguments
 function srun(){
     if [[ x$@ !=  x ]]
@@ -128,10 +91,10 @@ stty -ixon
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
-export GREP_COLOR="03;33"
 
 alias grep='grep -n --color=always --exclude=\*~'
 alias less='less -R'
+alias ip='ip --color=auto'
 
 alias ls='ls --color=always'
 alias nls='ls -1 | wc -l'
@@ -168,7 +131,7 @@ source $HOME/.completions/*
 
 # pass
 export PASSWORD_STORE_DIR=$HOME/DockZ/ownButt/password-store
-export PASSWORD_STORE_GIT=$HOME/DockZ/ownButt/password-store
+export PASSWORD_STORE_GIT=$PASSWORD_STORE_DIR
 
 # use clang as c/c++ compiler as default
 export CC=clang
