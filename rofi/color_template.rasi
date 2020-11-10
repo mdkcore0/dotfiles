@@ -1,15 +1,15 @@
 * {
-                                 /* rgba */
-    red:                         #dc322fFF; // base08 100%
-    blue:                        #268bd2FF; // base0D 100%
-    white:                       #fdf6e3FF; // base07 100%
-    yellow:                      #b58900FF; // base0A 100%
-    lightfg:                     #eee8d5FF; // base06 100%
-    lightbg:                     #073642FF; // base01 100%
-    foreground:                  #93a1a1FF; // base05 100%
-    background:                  #002b36FF; // base00 100%
-    background-color:            #002b3600; // base00   0%
-    highlight:                   bold #268bd2FF; // blue
+                                 // rgba
+    red:                         #{{color1}}ff;
+    blue:                        #{{color4}}ff;
+    white:                       #{{color15}}ff;
+    yellow:                      #{{color3}}ff;
+    lightfg:                     #{{color21}}ff;
+    lightbg:                     #{{color18}}ff;
+    foreground:                  #{{color7}}ff;
+    background:                  #{{color0}}ff;
+    background-color:            #{{color0}}00;
+    highlight:                   bold #{{color4}}ff;
 
     separator-color:             var(foreground);
     border-color:                var(foreground);
