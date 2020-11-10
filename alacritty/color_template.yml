@@ -1,0 +1,36 @@
+colors:
+  primary:
+    background: '0x{{color0}}'
+    foreground: '0x{{color7}}'
+
+  cursor:
+    text: '0x{{color0}}'
+    cursor: '0x{{color7}}'
+
+  normal:
+    black:   '0x{{color0}}'
+    red:     '0x{{color1}}'
+    green:   '0x{{color2}}'
+    yellow:  '0x{{color3}}'
+    blue:    '0x{{color4}}'
+    magenta: '0x{{color5}}'
+    cyan:    '0x{{color6}}'
+    white:   '0x{{color7}}'
+
+  bright:
+    black:   '0x{{color8}}'
+    red:     '0x{{color9}}'
+    green:   '0x{{color10}}'
+    yellow:  '0x{{color11}}'
+    blue:    '0x{{color12}}'
+    magenta: '0x{{color13}}'
+    cyan:    '0x{{color14}}'
+    white:   '0x{{color15}}'
+
+  indexed_colors:
+    - { index: 16, color: '0x{{color16}}' }
+    - { index: 17, color: '0x{{color17}}' }
+    - { index: 18, color: '0x{{color18}}' }
+    - { index: 19, color: '0x{{color19}}' }
+    - { index: 20, color: '0x{{color20}}' }
+    - { index: 21, color: '0x{{color21}}' }

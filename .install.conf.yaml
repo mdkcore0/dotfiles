@@ -48,9 +48,7 @@
     # xkb mappings
     ~/.config/xkb: xkb
     # alacritty
-    ~/.config/alacritty/alacritty.yml:
-        create: true
-        path: alacritty/alacritty.yml
+    ~/.config/alacritty: alacritty
 - shell:
     # mutt
     -
