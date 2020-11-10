@@ -11,8 +11,6 @@
     background-color:            #002b3600; // base00   0%
     highlight:                   bold #268bd2FF; // blue
 
-    spacing:                     2;
-
     separator-color:             var(foreground);
     border-color:                var(foreground);
 

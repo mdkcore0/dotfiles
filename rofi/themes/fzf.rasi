@@ -1,3 +1,14 @@
+configuration {
+    display-run: "";
+    display-window: "";
+    cycle: false;
+    scroll-method: 1;
+}
+
+* {
+    spacing: 2;
+}
+
 @import "colors.rasi"
 
 window {
