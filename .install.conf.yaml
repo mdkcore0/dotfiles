@@ -38,7 +38,7 @@
         path: nvim/init.vim
     ~/.pythonrc: pythonrc
     # tig
-    ~/.tigrc: tigrc
+    ~/.config/tig: tig
     # weechat
     ~/.weechat: weechat
     # polybar
@@ -63,14 +63,17 @@
         - wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -N -P ~/.extras/
         - "Downloading GIT completion dependency"
     -
-        - wget https://raw.githubusercontent.com/jonas/tig/master/contrib/vim.tigrc -N -P ~/.extras/
-        - "Downloading TIG vim keybindings dependency"
-    -
         - git clone --recursive https://github.com/petervanderdoes/gitflow-avh.git ~/downloads/GIT/gitflow-avh
         - "Cloning GITFLOW-AVH dependency"
     -
         - git clone --recursive https://github.com/petervanderdoes/git-flow-completion ~/downloads/GIT/git-flow-completion
         - "Cloning GIT-FLOW-COMPLETION dependency"
+    -
+        - wget https://raw.githubusercontent.com/jonas/tig/master/contrib/vim.tigrc -N -P ~/.config/tig/
+        - "Downloading TIG vim keybindings dependency"
+    -
+        - wget https://raw.githubusercontent.com/jonas/tig/master/contrib/git-flow.tigrc -N -P ~/.config/tig/
+        - "Downloading TIG git-flow keybindings dependency"
     # tmux plugin manager
     -
         - git clone --recursive https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
