@@ -1,6 +1,7 @@
 # source: https://github.com/jonas/tig/blob/master/contrib/
 source ~/.config/tig/vim.tigrc
 source ~/.config/tig/git-flow.tigrc
+source ~/.config/tig/theme.tigrc
 
 bind generic cv !git commit -v
 bind generic cs !git commit -sv
