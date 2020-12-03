@@ -12,8 +12,6 @@
     ~/.gitconfig: gitconfig
     # tmux
     ~/.tmux.conf: tmux.conf
-    # Xresources
-    ~/.Xresources: Xresources
     # XCompose
     ~/.XCompose: XCompose
     # xinitrc
@@ -50,9 +48,7 @@
     # xkb mappings
     ~/.config/xkb: xkb
     # alacritty
-    ~/.config/alacritty/alacritty.yml:
-        create: true
-        path: alacritty/alacritty.yml
+    ~/.config/alacritty: alacritty
 - shell:
     # mutt
     -

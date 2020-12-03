@@ -115,6 +115,10 @@ Plugin 'junegunn/fzf.vim'
 " vim-devicons | https://github.com/ryanoasis/vim-devicons
 Plugin 'ryanoasis/vim-devicons'
 
+
+" base16-vim | https://github.com/chriskempson/base16-vim
+Plugin 'chriskempson/base16-vim'
+
 call vundle#end()
 filetype plugin indent on
 
@@ -250,11 +254,8 @@ nmap <silent> <C-_> <Plug>(pydocstring)
 " vim-indent-guides
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
-" odd and even with same color :)
-let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=black
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=black
-
+let g:indent_guides_auto_colors = 1
+let g:indent_guides_color_change_percent = 2
 
 " just autoload on python files; toggle with <leader>ig
 augroup python_files
@@ -277,3 +278,12 @@ nmap <silent> <F6> <Plug>(ale_next_wrap)
 " vim-devicons | https://github.com/ryanoasis/vim-devicons
 " uname -s
 let g:WebDevIconsOS = 'Linux'
+
+
+" base16-vim | https://github.com/chriskempson/base16-vim
+set termguicolors
+if filereadable(expand("~/.vimrc_background"))
+    let base16colorspace=256
+    source ~/.vimrc_background
+    let g:airline_theme='base16'
+endif

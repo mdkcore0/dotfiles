@@ -1,3 +1,6 @@
+# NOTE: colors are defined on i3/scripts/dunst_launcher ;)
+# XXX cleanup
+
 [global]
     font = Input Nerd Font 10
 
@@ -10,7 +13,7 @@
     show_age_threshold = 60
     word_wrap = yes
     ignore_newline = no
-    geometry = "300x5-30+20"
+    geometry = "300x5-30+35"
     shrink = no
     transparency = 0
     idle_threshold = 120
@@ -20,10 +23,9 @@
     history_length = 20
     show_indicators = yes
     line_height = 0
-    separator_height = 2
+    separator_height = 1
     padding = 8
     horizontal_padding = 8
-    separator_color = frame
     startup_notification = false
     #dmenu = /usr/bin/dmenu -p dunst:
     browser = xdg-open
@@ -33,7 +35,6 @@
 
 [frame]
     width = 1
-    color = "#586e75"
 
 [shortcuts]
     #close = ctrl+space
@@ -42,20 +43,13 @@
     #history = ctrl+grave
     #context = ctrl+shift+period
 
-# solarized color scheme following my configuration on i3
 [urgency_low]
-    background = "#073642"
-    foreground = "#93a1a1"
     timeout = 10
 
 [urgency_normal]
-    background = "#657b83"
-    foreground = "#fdf6e3"
     timeout = 10
 
 [urgency_critical]
-    background = "#d33682"
-    foreground = "#fdf6e3"
     timeout = 0
 
 # vim: ft=cfg
