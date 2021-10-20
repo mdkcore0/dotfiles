@@ -119,6 +119,14 @@ Plugin 'ryanoasis/vim-devicons'
 " base16-vim | https://github.com/chriskempson/base16-vim
 Plugin 'chriskempson/base16-vim'
 
+
+" nvim-treesitter | https://github.com/nvim-treesitter/nvim-treesitter
+Plugin 'nvim-treesitter/nvim-treesitter'
+
+
+" nvim-lspconfig | https://github.com/neovim/nvim-lspconfig
+Plugin 'neovim/nvim-lspconfig'
+
 call vundle#end()
 filetype plugin indent on
 
