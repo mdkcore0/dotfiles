@@ -1,21 +1,22 @@
 import:
-  - ./.config/alacritty/colors.yml
+ - ~/.config/alacritty/colors.yml
 
 font:
   normal:
     family: Iosevka Term Nerd Font
   size: 10
 
-background_opacity: 1.0
+window:
+  opacity: 1.0
+  dynamic_title: true
 
 selection:
   save_to_clipboard: true
-
-window.dynamic_title: true
 
 live_config_reload: true
 
 mouse:
   hide_when_typing: true
-  url:
-    modifiers: Control
+
+hints:
+  enabled: []
