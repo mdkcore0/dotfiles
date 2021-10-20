@@ -23,17 +23,17 @@
     ~/.bashrc: bashrc
     ~/.zshrc: zshrc
     # vim and its bundles
-    ~/.vimrc: nvim/init.vim
+    ~/.vimrc: nvim.old/init.vim
     ~/.vim/bundles.vim:
         create: true
-        path: nvim/bundles.vim
+        path: nvim.old/bundles.vim
     # neovim
     ~/.config/nvim/bundles.vim:
         create: true
-        path: nvim/bundles.vim
+        path: nvim.old/bundles.vim
     ~/.config/nvim/init.vim:
         create: true
-        path: nvim/init.vim
+        path: nvim.old/init.vim
     ~/.pythonrc: pythonrc
     # tig
     ~/.config/tig: tig
