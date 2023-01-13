@@ -9,9 +9,9 @@ SINK=@DEFAULT_SINK@
 
 case $1 in
     state)
-        port=$(pactl list sinks | grep "Active Port" | awk '{print $3}')
-        state=$(pactl list sinks| grep Mute | awk '{print $2}')
-        vol=$(pactl list sinks | grep Volume | head -n1 | awk '{print $5}')
+        port=$(pactl list sinks | grep "Active Port" | awk "{print $4}")
+        state=$(pactl list sinks| grep "Mute" | awk "{print $3}")
+        vol=$(pactl list sinks | grep "Volume" | head -n1 | awk "{print $6}")
 
         icon=""
         if [ $port == "analog-output-headphones" ]

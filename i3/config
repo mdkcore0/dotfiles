@@ -17,6 +17,7 @@ hide_edge_borders both
 
 # start a terminal
 bindsym $mod+Return exec --no-startup-id WINIT_X11_SCALE_FACTOR=1 alacritty
+bindsym $mod+Shift+Return exec --no-startup-id WINIT_X11_SCALE_FACTOR=1 alacritty -o "window.dimensions.lines=44" -o "window.dimensions.columns=161" --class "Alacritty Float"
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -24,6 +25,7 @@ bindsym $mod+Shift+q kill
 # start rofi (a program launcher)
 bindsym --release $mod+d exec --no-startup-id "rofi -show run"
 bindsym --release $mod+Tab exec --no-startup-id "rofi -show window"
+bindsym --release $mod+m exec --no-startup-id "rofi -modi emoji -show emoji -emoji-mode copy -matching regex"
 
 # change focus
 bindsym $mod+$left  focus left
@@ -123,6 +125,9 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+# move window to center
+bindsym $mod+Shift+m exec "i3-msg move window to position center"
+
 # colors from Xresources, based on base16
 set_from_resource $base00 color0    #000000
 set_from_resource $base01 color18   #000000
@@ -156,8 +161,7 @@ default_border normal 1
 # special rules
 for_window [window_role="pop-up"]   floating enable
 for_window [window_role="task_dialog"] floating enable
-
-for_window [title="qmlscene"]       floating enable
+for_window [class="Alacritty Float"] floating enable, border 1pixel, move position center 
 
 # lock screen
 bindsym $mod+Ctrl+l exec xlock -xinerama
@@ -169,10 +173,11 @@ mouse_warping       none
 
 # init commands
 ####################
-exec_always --no-startup-id $HOME/.i3/scripts/dunst_launcher
-exec_always --no-startup-id $HOME/.i3/scripts/polybar_launcher&
+exec_always --no-startup-id $HOME/.config/i3/scripts/dunst_launcher
+exec_always --no-startup-id $HOME/.config/i3/scripts/polybar_launcher&
 exec --no-startup-id nextcloud&
-exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet&
+exec --no-startup-id cmst&
 
 # workspace assigns
 assign [class="^Steam$"]        10
@@ -181,3 +186,9 @@ assign [class="^Steam$"]        10
 bindsym $mod+Shift+minus move scratchpad
 # Show the first scratchpad window
 bindsym $mod+minus scratchpad show
+
+# toggle border of current window
+bindsym $mod+Shift+n border toggle
+
+# gaps inner 6
+# gaps outer -7
