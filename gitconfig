@@ -1,8 +1,12 @@
 [user]
     email = mdkcore@qtrnn.io
     name = Rodrigo Oliveira
+[commit]
+    gpgsign = true
 [core]
-    pager = less -XRMSI
+    ; pager = less -XRMSI
+    pager = delta
+    excludesfile = ~/.gitignore.global
 [color]
     ui = auto
 [log]
@@ -14,9 +18,31 @@
     please = "!f() { arg=$1; if [ x$arg == x ]; then arg=origin; fi; git config --list | grep remote.$arg.url | cut -d'=' -f2 | tail -n1; }; f"
     please-all = "!f() { git config --list | grep remote\\.\\*\\.url --color=never | grep -v alias | cut -d'.' -f2- | sed 's/.url=/:\t/'; }; f"
 [diff]
-    tool = vimdiff
+;     tool = vimdiff
+    colorMoved = default
 [merge]
-    tool = vimdiff
-    conflictstyle = diff3
+    ; tool = vimdiff
+    ; conflictstyle = diff3
+    conflictstyle = zdiff3
 [mergetool]
     prompt = false
+[init]
+    defaultBranch = main
+
+
+
+[interactive]
+    diffFilter = delta --color-only
+[add.interactive]
+    useBuiltin = false # required for git 2.37.0
+
+[delta]
+    navigate = true    # use n and N to move between diff sections
+    light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+    line-numbers = true
+    ; side-by-side = true
+    ; features = side-by-side theme
+    features = theme
+
+[delta "theme"]
+    syntax-theme = base16-256
