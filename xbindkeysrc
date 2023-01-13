@@ -2,27 +2,27 @@
 
 ## audio controls #############################################################
 # volume up TODO
-"$HOME/.i3/scripts/pactl-wrapper inc"
+"$HOME/.config/i3/scripts/pactl-wrapper inc"
     XF86AudioRaiseVolume
 
 # volume down TODO
-"$HOME/.i3/scripts/pactl-wrapper dec"
+"$HOME/.config/i3/scripts/pactl-wrapper dec"
     XF86AudioLowerVolume
 
 # mute toggle TODO
-"$HOME/.i3/scripts/pactl-wrapper toggle"
+"$HOME/.config/i3/scripts/pactl-wrapper toggle"
     XF86AudioMute
 
 # previous
-"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotifyd /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
+"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify_player /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
     XF86AudioPrev
 
 # play/pause
-"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotifyd /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify_player /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
     XF86AudioPlay
 
 # next
-"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotifyd /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
+"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify_player /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
     XF86AudioNext
 ###############################################################################
 
@@ -35,3 +35,7 @@
 "xbacklight -dec 10"
    XF86MonBrightnessDown
 ###############################################################################
+
+# screenshot
+"maim -s | xclip -selection clipboard -t image/png"
+    Print
