@@ -60,6 +60,12 @@ element {
     border:  0;
 }
 
+element-text {
+    background-color: inherit;
+    text-color:       inherit;
+    /* text-color:       var(lightfg); */
+}
+
 element normal.normal {
     background-color: var(normal-background);
     text-color:       var(normal-foreground);

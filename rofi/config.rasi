@@ -1,9 +1,8 @@
 configuration {
     font: "Iosevka Term Nerd Font 12";
 
-    monitor: "-4";
+    monitor: "-1";
 
-    combi-modi: "window,run";
     modi: "combi";
 
     matching: "fuzzy";
@@ -12,7 +11,7 @@ configuration {
     kb-move-word-forward: "Control+f";
     kb-move-char-back: "Left";
     kb-move-char-forward: "Right";
-
-    theme: "fzf";
 }
+
+@theme "fzf"
 /* vim:ft=css
