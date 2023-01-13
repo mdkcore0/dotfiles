@@ -2,12 +2,7 @@
 
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
-sysresources=/etc/X11/xinit/.Xresources
-sysmodmap=/etc/X11/xinit/.Xmodmap
 
-# Merge in defaults and keymaps
-[ -f $sysresources ] && /usr/bin/xrdb -merge $sysresources
-[ -f $sysmodmap ] && /usr/bin/xmodmap $sysmodmap
 [ -f $userresources ] && /usr/bin/xrdb -merge $userresources
 [ -f $usermodmap ] && /usr/bin/xmodmap $usermodmap
 
@@ -15,15 +10,19 @@ sysmodmap=/etc/X11/xinit/.Xmodmap
 xkbcomp -I$HOME/.config/xkb ~/.config/xkb/map $DISPLAY
 
 # adjust screen size
-# TODO it works with sleep, but I don't like this solution
-# TODO move to a script
+# XXX it works with sleep, but I don't like this solution
+# XXX move to a script
 sleep 2
-PRIMARY="eDP1"
-xrandr --output $PRIMARY --mode 1920x1200 --primary --dpi 112
+
+PRIMARY="eDP-1"
+PRIMARY_MODE="1920x1080"
+SECONDARY_MODE="2560x1440"
 SECONDARY=`xrandr --query | grep -v "$PRIMARY" | grep " connected" | cut -d" " -f1`
+
+xrandr --output $PRIMARY --mode "$PRIMARY_MODE" --primary
 if [ ! -z "$SECONDARY" ]
 then
-    xrandr --output $SECONDARY --mode 1920x1080 --above $PRIMARY --set "Broadcast RGB" "Full"
+    xrandr --output $SECONDARY --mode "$SECONDARY_MODE" --above $PRIMARY
 fi
 
 # custom key bindings
@@ -31,9 +30,10 @@ xbindkeys
 
 unset PINENTRY_USER_DATA
 
-# start i3
-if [ -z "$DESKTOP_SESSION" -a -x /usr/bin/ck-launch-session ]; then
-    exec ck-launch-session dbus-launch --exit-with-session /usr/bin/i3
-else
-    exec /usr/bin/i3
-fi
+# init pipewire/wireplumber
+/usr/bin/pipewire&
+/usr/bin/pipewire-pulse&
+/bin/wireplumber&
+
+# run i3wm
+exec dbus-run-session /usr/bin/i3
