@@ -1,5 +1,5 @@
 configuration {
-    font: "Input Nerd Font 12";
+    font: "Iosevka Term Nerd Font 12";
 
     monitor: "-4";
 
