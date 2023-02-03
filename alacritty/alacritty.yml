@@ -3,10 +3,8 @@ import:
 
 font:
   normal:
-    family: Input Nerd Font
+    family: Iosevka Term Nerd Font
   size: 10
-  glyph_offset:
-    y: -1
 
 background_opacity: 1.0
 
