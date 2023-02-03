@@ -2,7 +2,7 @@
 # XXX cleanup
 
 [global]
-    font = Input Nerd Font 10
+    font = Iosevka Term Nerd Font 10
 
     allow_markup = yes
     format = "<b>%s</b> (<i>%a</i>)\n\n%b"
