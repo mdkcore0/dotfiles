@@ -7,7 +7,7 @@ set $up     k
 set $right  l
 
 # font (xft uses pango, so, you can use pango instead xft, the result will be the same
-font pango:Input Nerd Font 10
+font pango:Iosevka Term Nerd Font 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
