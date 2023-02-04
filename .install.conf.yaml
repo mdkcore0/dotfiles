@@ -1,27 +1,41 @@
 - clean: ['~']
 - link:
-    # mutt
-    #~/.mutt: mutt
     # i3wm
-    ~/.i3: i3
+    ~/.config/i3/config:
+        create: true
+        path: i3/config
+    ~/.config/i3/scripts:
+        create: true
+        path: i3/scripts
     # dunst
-    ~/.config/dunst: dunst
+    ~/.config/dunst/dunstrc:
+        create: true
+        path: dunst/dunstrc
     # rofi
-    ~/.config/rofi: rofi
+    ~/.config/rofi/config.rasi:
+        create: true
+        path: rofi/config.rasi
+    ~/.config/rofi/themes:
+        create: true
+        path: rofi/themes
+    ~/.config/rofi/color_template.rasi:
+        create: true
+        path: rofi/color_template.rasi
     # git
     ~/.gitconfig: gitconfig
     ~/.gitignore.global: gitignore.global
     # tmux
-    ~/.tmux.conf: tmux.conf
+    ~/.config/tmux/tmux.conf:
+        create: true
+        path: tmux/tmux.conf
     # XCompose
     ~/.XCompose: XCompose
     # xinitrc
     ~/.xinitrc: xinitrc
-    # xbindkeys
-    ~/.xbindkeysrs: xbindkeysrc
-    # profile, bashrc and zshrc
+    # xbindkeysrc
+    ~/.xbindkeysrc: xbindkeysrc
+    # profile and zshrc
     ~/.profile: profile
-    ~/.bashrc: bashrc
     ~/.zshrc: zshrc
     # neovim
     ~/.config/nvim/init.lua:
@@ -35,37 +49,69 @@
         path: nvim/after
     ~/.pythonrc: pythonrc
     # tig
-    ~/.config/tig: tig
-    # weechat
-    #~/.weechat: weechat
-    # polybar
-    ~/.config/polybar: polybar
-    # ranger
-    ~/.config/ranger/rc.conf:
+    ~/.config/tig/config:
         create: true
-        path: ranger/rc.conf
+        path: tig/config
+    ~/.config/tig/theme.tigrc:
+        create: true
+        path: tig/theme.tigrc
+    # polybar
+    ~/.config/polybar/config:
+        create: true
+        path: polybar/config
     # xkb mappings
     ~/.config/xkb: xkb
     # alacritty
-    ~/.config/alacritty: alacritty
+    ~/.config/alacritty/alacritty.yml:
+        create: true
+        path: alacritty/alacritty.yml
+    ~/.config/alacritty/color_template.yml:
+        create: true
+        path: alacritty/color_template.yml
+    # pipewire
+    ~/.config/pipewire/pipewire.conf:
+        create: true
+        path: pipewire/pipewire.conf
+    # zathura
+    ~/.config/zathura/zathurarc:
+        create: true
+        path: zathurarc
+    # podman
+    ~/.config/containers/containers.conf:
+        create: true
+        path: podman/containers.conf
+    ~/.config/containers/registries.conf:
+        create: true
+        path: podman/registries.conf
+    # spotifyd
+    ~/.config/spotifyd/spotifyd.conf:
+        create: true
+        path: spotifyd/spotifyd.conf
+    # librewolf
+    ~/.librewolf/librewolf.overrides.cfg:
+        create: true
+        path: librewolf/librewolf.overrides.cfg
+    # neofetch
+    ~/.config/neofetch/config.conf:
+        create: true
+        path: neofetch/config.conf
+    # btop
+    ~/.config/btop/btop.conf:
+        create: true
+        path: btop/btop.conf
+    # picom
+    ~/.config/picom.conf: picom.conf
     # scripts
     ~/.local/bin/udev-handler:
         create: true
         path: bin/udev-handler
 - shell:
-    # mutt
-    #-
-    #    - ""
-    #    - "You must install goobook to fetch/add contacts from Google\n\tex.: easy_install goobook"
     # git
     -
-        - wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -N -P ~/.extras/
-        - "Downloading GIT completion dependency"
-    -
-        - git clone --recursive https://github.com/petervanderdoes/gitflow-avh.git ~/downloads/GIT/gitflow-avh
+        - git clone --recursive https://github.com/petervanderdoes/gitflow-avh.git ~/Downloads/GIT/gitflow-avh
         - "Cloning GITFLOW-AVH dependency"
     -
-        - git clone --recursive https://github.com/petervanderdoes/git-flow-completion ~/downloads/GIT/git-flow-completion
+        - git clone --recursive https://github.com/petervanderdoes/git-flow-completion ~/Downloads/GIT/git-flow-completion
         - "Cloning GIT-FLOW-COMPLETION dependency"
     -
         - wget https://raw.githubusercontent.com/jonas/tig/master/contrib/vim.tigrc -N -P ~/.config/tig/
@@ -75,62 +121,41 @@
         - "Downloading TIG git-flow keybindings dependency"
     # tmux plugin manager
     -
-        - git clone --recursive https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+        - git clone --recursive https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
         - "Cloning TMUX PLUGIN MANAGER dependency (Reload tmux afterwards)"
     # oh-my-zsh
     -
-        - git clone --recursive https://github.com/robbyrussell/oh-my-zsh.git ~/downloads/GIT/oh-my-zsh
+        - git clone --recursive https://github.com/robbyrussell/oh-my-zsh.git ~/Downloads/GIT/oh-my-zsh
         - "Cloning OH-MY-ZSH dependency (use antigen instead?)"
     # zsh-completions
     -
-        - git clone --recursive https://github.com/zsh-users/zsh-completions ~/downloads/GIT/zsh-completions
+        - git clone --recursive https://github.com/zsh-users/zsh-completions ~/Downloads/GIT/zsh-completions
         - "Cloning ZSH-COMPLETIONS dependency"
-    # fasd
-    -
-        - git clone --recursive https://github.com/clvv/fasd.git ~/downloads/GIT/fasd
-        - "Cloning FASD dependency"
-    -
-        - ln -s ~/downloads/GIT/fasd/fasd ~/.bin/fasd
-        - "Linking 'fasd'"
-    # s
-    -
-        - git clone --recursive https://github.com/haosdent/s ~/downloads/GIT/s
-        - "Cloning S dependency"
-    # Bear
-    -
-        - git clone --recursive https://github.com/rizsotto/Bear.git ~/downloads/GIT/Bear
-        - "Cloning BEAR dependency (You should compile/install it afterwards)"
-    # weechat
-    #-
-    #  - git clone --recursive https://github.com/weechat/scripts.git ~/downloads/GIT/weechat-scripts
-    #  - "Cloning weechat-scripts dependency"
-    #-
-    #  - mkdir -p ~/.weechat/lua/autoload/; ln -s ~/downloads/GIT/weechat-scripts/lua/urlselect.lua ~/.weechat/lua/autoload/urlselect.lua
-    #  - "Linking 'urlselect.lua'"
-    #-
-    #  - mkdir -p ~/.weechat/perl/autoload/; ln -s ~/downloads/GIT/weechat-scripts/perl/buffers.pl ~/.weechat/perl/autoload/buffers.pl
-    #  - "Linking 'buffers.pl'"
-    #-
-    #  - mkdir -p ~/.weechat/perl/autoload/; ln -s ~/downloads/GIT/weechat-scripts/perl/highmon.pl ~/.weechat/perl/autoload/highmon.pl
-    #  - "Linking 'highmon.pl'"
-    #-
-    #  - mkdir -p ~/.weechat/perl/autoload/; ln -s ~/downloads/GIT/weechat-scripts/perl/iset.pl ~/.weechat/perl/autoload/iset.pl
-    #  - "Linking 'iset.pl'"
-    #-
-    #  - mkdir -p ~/.weechat/python/autoload/; ln -s ~/downloads/GIT/weechat-scripts/python/go.py ~/.weechat/python/autoload/go.py
-    #  - "Linking 'go.py'"
-    #-
-    #  - mkdir -p ~/.weechat/python/autoload/; ln -s ~/downloads/GIT/weechat-scripts/python/lnotify.py ~/.weechat/python/autoload/lnotify.py
-    #  - "Linking 'lnotify.py'"
     # zce.zsh
     -
-      - git clone --recursive https://github.com/hchbaw/zce.zsh.git ~/downloads/GIT/zce.zsh
-      - "Cloning zce.zsh dependency"
-    # fzf
+     - git clone --recursive https://github.com/hchbaw/zce.zsh.git ~/Downloads/GIT/zce.zsh
+     - "Cloning zce.zsh dependency"
+    # base16 things
     -
-      - git clone --recursive https://github.com/junegunn/fzf.git ~/downloads/GIT/fzf
-      - "Cloning fzf dependency"
-    # ranger
+        - git clone --recursive https://github.com/tinted-theming/base16-shell.git ~/Downloads/GIT/base16-shell
+        - "Cloning base16-shell dependency"
     -
-      - ranger --copy-config=scope
-      - "Setting up scope.sh (ranger)"
+        - git clone --recursive https://github.com/tinted-theming/base16-xresources.git ~/Downloads/GIT/base16-xresources
+        - "Cloning base16-xresources dependency"
+    # powerlevel10k
+    -
+        - git clone --recursive https://github.com/romkatv/powerlevel10k.git ~/Downloads/GIT/powerlevel10k
+        - "Cloning powerlevel10k dependency"
+    # pyenv
+    -
+        - git clone https://github.com/pyenv/pyenv.git ~/Downloads/GIT/pyenv
+        - "Cloning pyenv dependency"
+    -
+        - git clone https://github.com/pyenv/pyenv-virtualenv.git ~/Downloads/GIT/pyenv/plugins/pyenv-virtualenv
+        - "Cloning pyenv-virtualenv dependency"
+    -
+        - git clone https://github.com/pyenv/pyenv-update.git ~/Downloads/GIT/pyenv/plugins/pyenv-update
+        - "Cloning pyenv-update dependency"
+    -
+        - git clone https://github.com/pyenv/pyenv-ccache.git ~/Downloads/GIT/pyenv/plugins/pyenv-ccache
+        - "Cloning pyenv-ccache dependency"
