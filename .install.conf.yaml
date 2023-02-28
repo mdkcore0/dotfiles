@@ -22,6 +22,16 @@
     ~/.profile: profile
     ~/.bashrc: bashrc
     ~/.zshrc: zshrc
+    # neovim
+    ~/.config/nvim/init.lua:
+        create: true
+        path: nvim/init.lua
+    ~/.config/nvim/lua:
+        create: true
+        path: nvim/lua
+    ~/.config/nvim/after:
+        create: true
+        path: nvim/after
     ~/.pythonrc: pythonrc
     # tig
     ~/.config/tig: tig
