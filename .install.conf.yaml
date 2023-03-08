@@ -22,18 +22,16 @@
     ~/.profile: profile
     ~/.bashrc: bashrc
     ~/.zshrc: zshrc
-    # vim and its bundles
-    ~/.vimrc: nvim/init.vim
-    ~/.vim/bundles.vim:
-        create: true
-        path: nvim/bundles.vim
     # neovim
-    ~/.config/nvim/bundles.vim:
+    ~/.config/nvim/init.lua:
         create: true
-        path: nvim/bundles.vim
-    ~/.config/nvim/init.vim:
+        path: nvim/init.lua
+    ~/.config/nvim/lua:
         create: true
-        path: nvim/init.vim
+        path: nvim/lua
+    ~/.config/nvim/after:
+        create: true
+        path: nvim/after
     ~/.pythonrc: pythonrc
     # tig
     ~/.config/tig: tig
@@ -97,10 +95,6 @@
     -
         - git clone --recursive https://github.com/rizsotto/Bear.git ~/downloads/GIT/Bear
         - "Cloning BEAR dependency (You should compile/install it afterwards)"
-    # Vundle
-    -
-        - git clone --recursive https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-        - "Cloning VUNDLE dependency (Run it afterwards: vim (or nvim) +PluginInstall +qall)"
     # weechat
     -
       - git clone --recursive https://github.com/weechat/scripts.git ~/downloads/GIT/weechat-scripts

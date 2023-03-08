@@ -18,6 +18,18 @@ Scripts
 There are some scripts bundled on my dotfiles (more like "helpers"), related to specific things (e.g. managing audio volume on i3).  
 For other scripts, see my [dotbins repo](https://git.sr.ht/~mdkcore/dotbins) ;)
 
+# Code style
+Currently only neovim lua configuration files are covered by code-styling
+tools (`stylua` and `luacheck`; stylua is automatically installed, while
+luacheck not).
+
+Also `pre-commit` must be installed in the system, and it can be installed as a
+git commit hook by running:
+
+```shell
+pre-commit install
+```
+
 Note for Slackware users
 ------------------------
 

@@ -1,0 +1,18 @@
+repos:
+  - repo: https://github.com/JohnnyMorganz/StyLua
+    rev: v0.16.1
+    hooks:
+      - id: stylua
+        name: StyLua
+        # language: rust
+        # types: [lua]
+        args: [-f, nvim/.stylua.toml, "-"]
+  - repo: https://github.com/lunarmodules/luacheck
+    rev: v1.1.0
+    hooks:
+      - id: luacheck
+        name: luacheck
+        # language: system
+        # language: lua
+        # types: [lua]
+        args: [--config, nvim/.luacheckrc, "-"]
