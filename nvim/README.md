@@ -12,5 +12,5 @@ wget https://github.com/artempyanykh/marksman/releases/latest/download/marksman-
 
 ## c/c++
 ```shell
-xbps-install clangd Bear
+xbps-install clang-tools-extra Bear
 ```
