@@ -12,29 +12,19 @@ comment.setup({
     extra = false,
   },
   toggler = {
-    line = '<leader>c<space>',
-    block = '<leader>v<space>',
-   },
+    line = "<leader>c<space>",
+    block = "<leader>v<space>",
+  },
   opleader = {
-    line = '<leader>c<space>',
-    block = '<leader>v<space>',
-    },
+    line = "<leader>c<space>",
+    block = "<leader>v<space>",
+  },
 })
 
 -- normal-mode linewise yank
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>cy",
-  [[<cmd>yank<CR><cmd>lua require('Comment.api').call('toggle.linewise.current')<CR>g@$]],
-  { noremap = true }
-)
+vim.keymap.set("n", "<leader>cy", "yy<Plug>(comment_toggle_linewise_current)")
 -- normal-mode blockwise yank
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>vy",
-  [[<cmd>yank<CR><cmd>lua require('Comment.api').call('toggle.blockwise.current')<CR>g@$]],
-  { noremap = true }
-)
+vim.keymap.set("n", "<leader>vy", "yy<Plug>(comment_toggle_blockwise_current)")
 -- visual-mode linewise yank
 vim.api.nvim_set_keymap(
   "x",
