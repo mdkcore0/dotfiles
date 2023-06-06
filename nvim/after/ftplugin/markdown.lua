@@ -10,21 +10,3 @@ https://arcticicestudio.github.io/styleguide-markdown/rules/whitespace.html#maxi
 vim.o.colorcolumn = "120"
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
-
--- update markdown parser
-local ok, treesitter = pcall(require, "nvim-treesitter.install")
-if not ok then
-  return
-end
-treesitter.commands.TSUpdate["run"]("markdown")
-treesitter.commands.TSUpdate["run"]("markdown_inline")
-
--- additional capabilities supported by nvim-cmp
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
--- setup markdown server
-require("lspconfig").marksman.setup({
-  on_attach = require("configs.keybindings").lsp_keybindings,
-  capabilities = capabilities,
-})
-require("lspconfig").marksman.manager.try_add_wrapper()
