@@ -39,6 +39,21 @@ local servers = {
       "--suggest-missing-includes",
     },
   },
+  gopls = {},
+  golangci_lint_ls = {
+    init_options = {
+      command = {
+        "golangci-lint",
+        "run",
+        "--enable-all",
+        "--disable",
+        "lll",
+        "--out-format",
+        "json",
+        "--issues-exit-code=1",
+      },
+    },
+  },
 }
 
 for server, config in pairs(servers) do
