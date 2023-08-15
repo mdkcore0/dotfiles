@@ -98,7 +98,7 @@ packer.startup({
 
     -- moving around
     use({
-      "phaazon/hop.nvim",
+      "smoka7/hop.nvim",
       config = function()
         require("configs.hop")
       end,
