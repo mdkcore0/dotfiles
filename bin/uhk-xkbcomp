@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# udev rule:
+# ACTION=="add", SUBSYSTEM=="usb", ENV{ID_VENDOR_ID}=="1d50", ENV{ID_MODEL_ID}=="6122", RUN+="/usr/bin/su <USER> -c '/home/<USER>/.local/bin/udev-handler uhk'"
+
+
+display=$(pgrep -af xinitrc | head -n1 | awk '{print $6}')
+filename=$(basename "$0")
+
+DISPLAY=$display dunstify -h string:x-dunst-stack-tag:uhk -a "$filename" "UHK detected" "Configuring UHK..."
+sleep 1
+
+cmd="xkbcomp -w0 -I${HOME}/.config/xkb ${HOME}/.config/xkb/map ${display}"
+
+echo "Running: $cmd; info:"
+echo "  user: $USER"
+echo "  display: $display"
+echo "  home: $HOME"
+
+$cmd 2>&1
+DISPLAY=$display dunstify -h string:x-dunst-stack-tag:uhk -a "$filename" "UHK detected" "Configuring UHK... done!"

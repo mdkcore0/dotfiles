@@ -47,6 +47,10 @@
     ~/.config/xkb: xkb
     # alacritty
     ~/.config/alacritty: alacritty
+    # scripts
+    ~/.local/bin/udev-handler:
+        create: true
+        path: bin/udev-handler
 - shell:
     # mutt
     -

@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# requires: at(1)
+
+dir=$(dirname -- "$(readlink -f "$0")")
+home=$(dirname -- "$(readlink -f "$0")" | cut -d"/" -f1-3)
+
+arg=$1
+
+
+case $arg in
+    uhk)
+        echo "Invoking uhk-xkbcomp in $dir" | logger
+        HOME=$home echo "$dir/./uhk-xkbcomp" | at -M now 2> /dev/null
+        ;;
+    *)
+        echo "Invalid argument, exiting"
+        exit 1
+        ;;
+esac
