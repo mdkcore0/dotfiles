@@ -101,6 +101,13 @@
         path: btop/btop.conf
     # picom
     ~/.config/picom.conf: picom.conf
+    # senpai
+    ~/.config/senpai/senpai.scfg:
+        create: true
+        path: senpai/senpai.scfg
+    ~/.config/senpai/highlight:
+        create: true
+        path: senpai/highlight
     # scripts
     ~/.local/bin/udev-handler:
         create: true
