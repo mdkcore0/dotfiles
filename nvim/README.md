@@ -22,3 +22,8 @@ go install github.com/nametake/golangci-lint-langserver@latest
 ```
 
 Also, add *GOPATH* to your *PATH* environment variable.
+
+## rust
+```sh
+xbps-install rust-analyzer rust-src
+```

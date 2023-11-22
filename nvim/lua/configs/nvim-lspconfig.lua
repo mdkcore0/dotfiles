@@ -54,6 +54,18 @@ local servers = {
       },
     },
   },
+  rust_analyzer = {
+    settings = {
+      ["rust-analyzer"] = {
+        imports = {
+          granularity = {
+            group = "module",
+          },
+          prefix = "self",
+        },
+      },
+    },
+  },
 }
 
 for server, config in pairs(servers) do
