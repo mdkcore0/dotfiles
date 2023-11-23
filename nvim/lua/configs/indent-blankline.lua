@@ -1,14 +1,22 @@
 -- indent-blankline.nvim
 
-local ok, indent_blankline = pcall(require, "indent_blankline")
+local ok, ibl = pcall(require, "ibl")
 if not ok then
   return
 end
 
-indent_blankline.setup({
-  space_char_blankline = " ",
-  show_current_context = true,
-  show_current_context_start = true,
-  use_treesitter = true,
-  buftype_exclude = { "terminal", "nofile" },
+ibl.setup({
+  indent = {
+    char = "│",
+  },
+  scope = {
+    include = {
+      node_type = {
+        ["*"] = { "*" },
+      },
+    },
+  },
+  exclude = {
+    buftypes = { "terminal", "nofile" },
+  },
 })
