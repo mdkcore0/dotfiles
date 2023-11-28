@@ -1,3 +1,5 @@
+vim.loader.enable()
+
 vim.g.mapleader = "f"
 vim.g.maplocalleader = "f"
 

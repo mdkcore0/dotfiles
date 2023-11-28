@@ -11,20 +11,15 @@ vim.o.colorcolumn = "120"
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
 
--- update markdown parser
-local ok, treesitter = pcall(require, "nvim-treesitter.install")
+-- ensure markdown_inline is also installed for markdown
+local ok, parsers = pcall(require, "nvim-treesitter.parsers")
 if not ok then
   return
 end
-treesitter.commands.TSUpdate["run"]("markdown")
-treesitter.commands.TSUpdate["run"]("markdown_inline")
 
--- additional capabilities supported by nvim-cmp
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
--- setup markdown server
-require("lspconfig").marksman.setup({
-  on_attach = require("configs.keybindings").lsp_keybindings,
-  capabilities = capabilities,
-})
-require("lspconfig").marksman.manager.try_add_wrapper()
+local ft = "markdown_inline"
+local installed = parsers.has_parser(parsers.ft_to_lang(ft))
+if not installed then
+  local treesitter = require("nvim-treesitter.install")
+  treesitter.commands.TSUpdate["run"](ft)
+end

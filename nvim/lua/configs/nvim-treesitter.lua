@@ -10,8 +10,11 @@ if not ok then
 end
 
 treesitter.setup({
+  auto_install = true,
+  ensure_installed = { "comment" },
   highlight = {
     enable = true,
+    disable = { "make", "yaml", "toml" },
   },
   -- XXX https://github.com/nvim-lua/kickstart.nvim/blob/af239a5b8182f8aca36a62f3c88279e031edef56/init.lua#L151
   incremental_selection = {

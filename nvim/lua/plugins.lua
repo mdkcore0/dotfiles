@@ -31,6 +31,14 @@ packer.startup({
       end,
     })
 
+    use({
+      "j-hui/fidget.nvim",
+      tag = "legacy",
+      config = function()
+        require("fidget").setup()
+      end,
+    })
+
     -- completion
     use({
       "hrsh7th/nvim-cmp",
@@ -90,7 +98,7 @@ packer.startup({
 
     -- moving around
     use({
-      "phaazon/hop.nvim",
+      "smoka7/hop.nvim",
       config = function()
         require("configs.hop")
       end,
